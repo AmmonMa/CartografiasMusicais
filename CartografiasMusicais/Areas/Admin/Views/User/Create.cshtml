@@ -1,0 +1,67 @@
+﻿@model CartografiasMusicais.CrossCutting.ValidationModels.User.RegisterUserViewModel
+@{
+    ViewData["Title"] = "Criar Usuário";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="page page-forms-common">
+    <div class="pageheader">
+        <h2>Usuários <span>Cadastro de usuários do sistema</span></h2>
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <span><i class="fa fa-home"></i> Administração</span>
+                </li>
+                <li>
+                    <span>Usuários</span>
+                </li>
+                <li>
+                    <span>Cadastrar Usuário</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- tile -->
+            <section class="tile">
+                <!-- tile header -->
+                <div class="tile-header dvd dvd-btm">
+                    <h1 class="custom-font"><strong>Cadastrar </strong>Usuário</h1>
+                </div>
+                <!-- /tile header -->
+                <!-- tile body -->
+                <div class="tile-body">
+
+                    <form asp-action="Create" class="form-horizontal">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="col-sm-2 control-label"></label>
+                            <div class="col-sm-10">
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="col-sm-2 control-label"></label>
+                            <div class="col-sm-10">
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-footer">
+                            <input type="submit" value="Salvar" class="btn btn-success btn-ef btn-ef-4 btn-ef-4c pull-right" />
+                            <button asp-action="Index" class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c"><i class="fa fa-arrow-left"></i>Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /tile body -->
+            </section>
+            <!-- /tile -->
+        </div>
+    </div>
+</div>
+

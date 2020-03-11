@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Administração</title>
+    <link rel="icon" type="image/ico" href="~/admin/images/favicon.ico" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/admin/css/bootstrap.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/admin/css/animate.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/admin/css/font-awesome.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/admin/js/animsition/css/animsition.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/admin/js/datatables/css/jquery.dataTables.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/admin/js/datatables/datatables.bootstrap.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/admin/js/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/admin/js/datatables/extensions/Responsive/css/dataTables.responsive.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/admin/js/datatables/extensions/ColVis/css/dataTables.colVis.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/admin/js/datatables/extensions/TableTools/css/dataTables.tableTools.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/admin/js/summernote/summernote.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/admin/css/main.css" asp-append-version="true">
+    <script src="~/admin/js/modernizr/modernizr-2.8.3-respond-1.4.2.min.js" asp-append-version="true"></script>
+</head>
+
+<body id="minovate" class="appWrapper scheme-black">
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="wrap" class="animsition">
+        <section id="header" class="scheme-black">
+            <header class="clearfix">
+                <div class="branding scheme-black">
+                    <a class="brand" href="index.html">
+                        <span>Administração</span>
+                    </a>
+                    <a href="#" class="offcanvas-toggle visible-xs-inline"><i class="fa fa-bars"></i></a>
+                </div>
+                <ul class="nav-left pull-left list-unstyled list-inline">
+                    <li class="sidebar-collapse divided-right">
+                        <a href="#" class="collapse-sidebar">
+                            <i class="fa fa-outdent"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Right-side navigation -->
+                <ul class="nav-right pull-right list-inline">
+                    <li class="dropdown nav-profile">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span>Bem Vindo<i class="fa fa-angle-down"></i></span>
+                        </a>
+
+                        <ul class="dropdown-menu animated littleFadeInRight" role="menu">
+                            @*<li>
+                                    <a href="#">
+                                        <i class="fa fa-user"></i>Perfil
+                                    </a>
+                                </li>*@
+                            <li>
+                                <a asp-area="" asp-controller="Auth" asp-action="SignOut">
+                                    <i class="fa fa-sign-out"></i>Sair
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Right-side navigation end -->
+            </header>
+        </section>
+        <div id="controls">
+            <aside id="sidebar" class="scheme-black">
+                <div id="sidebar-wrap">
+                    <div class="panel-group slim-scroll" role="tablist">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#sidebarNav">
+                                        Menu Principal <i class="fa fa-angle-up"></i>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="sidebarNav" class="panel-collapse collapse in" role="tabpanel">
+                                <div class="panel-body">
+                                    <ul id="navigation">
+                                        <li>
+                                            <a href="#"><i class="fa fa-users"></i> <span>Usuários</span></a>
+                                            <ul>
+                                                <li><a asp-controller="User" asp-action="Index"><i class="fa fa-caret-right"></i> Listar Todos</a></li>
+                                                <li><a asp-controller="User" asp-action="Create"><i class="fa fa-caret-right"></i> Cadastrar Usuário</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <section id="content">
+            @RenderBody()
+        </section>
+    </div>
+    <script src="~/admin/js/jquery/jquery-1.11.2.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/bootstrap/bootstrap.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/jRespond/jRespond.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/sparkline/jquery.sparkline.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/slimscroll/jquery.slimscroll.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/animsition/js/jquery.animsition.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/screenfull/screenfull.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/datatables/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/datatables/extensions/Responsive/js/dataTables.responsive.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/datatables/extensions/ColVis/js/dataTables.colVis.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/datatables/extensions/TableTools/js/dataTables.tableTools.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/datatables/extensions/dataTables.bootstrap.js" asp-append-version="true"></script>
+    <script src="~/admin/js/filestyle/bootstrap-filestyle.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/summernote/summernote.min.js" asp-append-version="true"></script>
+    <script src="~/admin/js/summernote-ptBR.js" asp-append-version="true"></script>
+    <script src="~/admin/js/main.js" asp-append-version="true"></script>
+    @RenderSection("PageScripts", required: false)
+</body>
+</html>
+

@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CartografiasMusicais.Business.Context\CartografiasMusicais.Business.Context.csproj" />
+    <ProjectReference Include="..\CartografiasMusicais.CrossCutting.ValidationModels\CartografiasMusicais.CrossCutting.ValidationModels.csproj" />
   </ItemGroup>
 
 
