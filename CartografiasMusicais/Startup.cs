@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
+using Slugify;
 
 namespace CartografiasMusicais
 {
@@ -52,6 +53,7 @@ namespace CartografiasMusicais
             });
 
             services.AddSession();
+            services.AddTransient<ISlugHelper, SlugHelper>();
             services.AddMvc(options =>
             {
                 options.EnableEndpointRouting = false;
