@@ -54,7 +54,14 @@
                                 {
                                     <tr class="odd">
                                         <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                                        <td>@item.Cidade.Nome</td>
+                                        @if(item.Cidade != null)
+                                        {
+                                            <td>@item.Cidade.Nome</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Pagina Principal</td>
+                                        }
                                         <td>@Html.DisplayFor(modeItem => item.Descricao)</td>
                                         <td>
                                             <img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, item.Imagem)" class='img-thumbnail img-circle size-100x100 img-responsive'>
