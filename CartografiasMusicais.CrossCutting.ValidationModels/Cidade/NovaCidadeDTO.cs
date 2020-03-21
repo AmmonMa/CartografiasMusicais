@@ -17,7 +17,7 @@ namespace CartografiasMusicais.CrossCutting.ValidationModels.Cidade
         public string Descricao { get; set; }
         public string Slug { get; set; }
         [Display(Name = "Imagem")]
-        [ValidExtension(".jpg,.jpeg,.png,.JPG,.JPEG,.PNG,.pdf,.PDF")]
+        [ValidExtension(".jpg,.jpeg,.png,.JPG,.JPEG,.PNG")]
         public IFormFile Imagem { get; set; }
         public string CaminhoImagem { get; set; }
     }

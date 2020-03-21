@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Corpo\" />
     <Folder Include="wwwroot\imagens\" />
   </ItemGroup>
 

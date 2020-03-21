@@ -47,17 +47,16 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var imagem = await FileService
-                                    .UploadFileAsync(obj.Imagem,
-                                                    HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{obj.Nome}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
 
                 await Context.Cidades.AddAsync(new Cidade
                 {
                     Nome = obj.Nome,
                     Descricao = obj.Descricao,
                     Slug = SlugHelper.GenerateSlug(obj.Nome).ToString(),
-                    Imagem = imagem
+                    Imagem = ((obj.Imagem != null) ? await FileService
+                                    .UploadFileAsync(obj.Imagem,
+                                                    HostingEnvironment.WebRootPath + "/imagens/",
+                                                    $"{obj.Nome}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}") : null)
                 });
                 await Context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -70,6 +69,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             var cidade = await Context.Cidades.FirstOrDefaultAsync(x => x.Id == id);
             var model = new MudaCidadeDTO
             {
+                Id = cidade.Id,
                 Nome = cidade.Nome,
                 Descricao = cidade.Descricao,
                 CaminhoImagem = cidade.Imagem
@@ -84,14 +84,16 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             var cidade = await Context.Cidades.FirstOrDefaultAsync(x => x.Id == obj.Id);
             if (ModelState.IsValid && cidade != null)
             {
-                cidade.Id = obj.Id;
                 cidade.Nome = obj.Nome;
                 cidade.Descricao = obj.Descricao;
                 cidade.Slug = SlugHelper.GenerateSlug(obj.Nome).ToString();
-                cidade.Imagem = await FileService
-                                    .UploadFileAsync(obj.Imagem,
-                                                    HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{obj.Nome}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
+                if (obj.Imagem != null)
+                {
+                    cidade.Imagem = await FileService
+                                        .UploadFileAsync(obj.Imagem,
+                                                        HostingEnvironment.WebRootPath + "/imagens/",
+                                                        $"{obj.Nome}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
+                }
                 await Context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
