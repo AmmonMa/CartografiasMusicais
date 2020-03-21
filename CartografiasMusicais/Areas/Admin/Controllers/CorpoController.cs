@@ -38,7 +38,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.Corpos = new SelectList(Context.Corpos.OrderByDescending(x => x.Id).ToList(), "Id", "Nome");
+            ViewBag.Cidades = new SelectList(Context.Cidades.OrderByDescending(x => x.Id).ToList(), "Id", "Nome");
             return View();
         }
 
@@ -48,10 +48,6 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var imagem = await FileService
-                                    .UploadFileAsync(obj.Imagem,
-                                                    HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{obj.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
 
                 await Context.Corpos.AddAsync(new Corpo
                 {
@@ -59,12 +55,15 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     Video = obj.Video,
                     CidadeId = obj.CidadeId,
                     Slug = SlugHelper.GenerateSlug(obj.Descricao).ToString(),
-                    Imagem = imagem
+                    Imagem = ((obj.Imagem != null) ? await FileService
+                                    .UploadFileAsync(obj.Imagem,
+                                                    HostingEnvironment.WebRootPath + "/imagens/",
+                                                    $"{obj.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}") : null)
                 });
                 await Context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Corpos = new SelectList(Context.Corpos.OrderByDescending(x => x.Id).ToList(), "Id", "Nome");
+            ViewBag.Cidades = new SelectList(Context.Cidades.OrderByDescending(x => x.Id).ToList(), "Id", "Nome");
             return View(obj);
         }
 
@@ -80,7 +79,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                 Slug = corpo.Slug,
                 CaminhoImagem = corpo.Imagem
             };
-            ViewBag.Corpos = new SelectList(Context.Corpos.OrderByDescending(x => x.Id).ToList(), "Id", "Nome");
+            ViewBag.Cidades = new SelectList(Context.Cidades.OrderByDescending(x => x.Id).ToList(), "Id", "Nome");
             return View(model);
         }
 
@@ -96,16 +95,19 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                 corpo.Video = obj.Video;
                 corpo.CidadeId = obj.CidadeId;
 
-                corpo.Slug = SlugHelper.GenerateSlug(obj.Slug).ToString();
-                corpo.Imagem = await FileService
-                                    .UploadFileAsync(obj.Imagem,
-                                                    HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{obj.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
+                corpo.Slug = SlugHelper.GenerateSlug(obj.Descricao).ToString();
+                if(obj.Imagem != null)
+                {
+                    corpo.Imagem = await FileService
+                                        .UploadFileAsync(obj.Imagem,
+                                                        HostingEnvironment.WebRootPath + "/imagens/",
+                                                        $"{obj.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
+                }
 
                 await Context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Corpos = new SelectList(Context.Corpos.OrderByDescending(x => x.Id).ToList(), "Id", "Nome");
+            ViewBag.Cidades = new SelectList(Context.Cidades.OrderByDescending(x => x.Id).ToList(), "Id", "Nome");
             return View(obj);
         }
 

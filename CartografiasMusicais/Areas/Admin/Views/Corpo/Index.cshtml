@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CartografiasMusicais.Business.Context.Musica>
+﻿@model IEnumerable<CartografiasMusicais.Business.Context.Corpo>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,14 +7,14 @@
 
 <div class="page page-tables-datatables">
     <div class="pageheader">
-        <h2>Listar <span>Info Pagina Musicas</span></h2>
+        <h2>Listar <span>Infos da pagina Corpos</span></h2>
         <div class="page-bar">
             <ul class="page-breadcrumb">
                 <li>
                     <span><i class="fa fa-home"></i> Administração</span>
                 </li>
                 <li>
-                    <span>Pagina Musicas</span>
+                    <span>Corpos</span>
                 </li>
                 <li>
                     <span>Listar Todos</span>
@@ -28,10 +28,10 @@
             <section class="tile">
                 <!-- tile header -->
                 <div class="tile-header dvd dvd-btm">
-                    <h1 class="custom-font"><strong>Listar</strong>Pagina Musicas</h1>
+                    <h1 class="custom-font"><strong>Listar</strong> Info para a Pagina Corpos</h1>
                     <ul class="controls">
                         <li>
-                            <a asp-action="Create" role="button" tabindex="0" id="add-entry"><i class="fa fa-plus mr-5"></i>Nova Info Pagina Musica</a>
+                            <a asp-action="Create" role="button" tabindex="0" id="add-entry"><i class="fa fa-plus mr-5"></i>Nova Info</a>
                         </li>
                     </ul>
                 </div>
@@ -115,7 +115,7 @@
 
                 var nRow = $(this).parents('tr')[0];
                 var id = ($(nRow).children('td').eq(0).text());
-                $.post('Musica/Delete', { id: id }, function (_) { oTable.row(nRow).remove().draw(); });
+                $.post('Corpo/Delete', { id: id }, function (_) { oTable.row(nRow).remove().draw(); });
             });
 
         });
