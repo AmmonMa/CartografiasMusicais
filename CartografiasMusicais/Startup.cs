@@ -101,6 +101,15 @@ namespace CartografiasMusicais
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute("pers_route_1", "apresenta",
+                    defaults: new { controller = "Home", action = "Apresentacao" });
+
+                routes.MapRoute("pers_route_2", "equipe",
+                    defaults: new { controller = "Home", action = "Equipe" });
+
+                routes.MapRoute("pers_route_3", "contato",
+                    defaults: new { controller = "Home", action = "Contato" });
             });
         }
     }
