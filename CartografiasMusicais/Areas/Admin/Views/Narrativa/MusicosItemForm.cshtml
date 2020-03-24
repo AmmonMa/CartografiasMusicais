@@ -1,0 +1,35 @@
+﻿@model CartografiasMusicais.CrossCutting.ValidationModels.Narrativa.NarrativaItemValidationModel
+
+
+@using HtmlHelpers.BeginCollectionItemCore;
+@using (Html.BeginCollectionItem("Musicos"))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.CaminhoImagem)
+    <table class="table table-custom">
+        <tr>
+            <td>
+                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+            </td>
+
+            @if (!string.IsNullOrEmpty(Model.CaminhoImagem))
+            {
+                <td>
+                    <img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, Model.CaminhoImagem)" class='img-thumbnail img-circle size-100x100 img-responsive'>
+                </td>
+                <td>
+                    <input asp-for="Imagem" type="file" accept="image/*" class="filestyle" data-buttonText="Novo Arquivo" data-iconName="fa fa-inbox" />
+                </td>
+            }
+            else
+            {
+                <td>
+                    <input asp-for="Imagem" type="file" accept="image/*" class="filestyle" data-buttonText="Inserir Arquivo" data-iconName="fa fa-inbox" />
+                </td>
+            }
+            <td>
+                <button data-action="removeItem" class="btn btn-default">Remover</button>
+            </td>
+        </tr>
+    </table>
+}

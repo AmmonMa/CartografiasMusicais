@@ -16,9 +16,9 @@ namespace CartografiasMusicais.Business.Context
         public virtual Cidade Cidade { get; set; }
         public string Slug { get; set; }
 
-        public virtual ICollection<Musico> Musicos { get; set; }
-        public virtual ICollection<Frequentador> Frequentadores { get; set; }
-        public virtual ICollection<Voz> Vozes { get; set; }
+        public virtual IList<Musico> Musicos { get; set; }
+        public virtual IList<Frequentador> Frequentadores { get; set; }
+        public virtual IList<Voz> Vozes { get; set; }
 
     }
 }

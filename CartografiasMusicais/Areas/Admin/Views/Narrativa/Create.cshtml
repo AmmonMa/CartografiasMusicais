@@ -22,18 +22,19 @@
             </ul>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <!-- tile -->
-            <section class="tile">
-                <!-- tile header -->
-                <div class="tile-header dvd dvd-btm">
-                    <h1 class="custom-font"><strong>Cadastrar </strong>Info para a pagina Narrativa</h1>
-                </div>
-                <!-- /tile header -->
-                <!-- tile body -->
-                <div class="tile-body">
-                    <form enctype="multipart/form-data" asp-action="Create" class="form-horizontal">
+    <form enctype="multipart/form-data" asp-action="Create" class="form-horizontal">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- tile -->
+                <section class="tile">
+                    <!-- tile header -->
+                    <div class="tile-header dvd dvd-btm">
+                        <h1 class="custom-font"><strong>Cadastrar </strong>Info para a pagina Narrativa</h1>
+                    </div>
+                    <!-- /tile header -->
+                    <!-- tile body -->
+                    <div class="tile-body">
+
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
                             <label asp-for="CidadeId" class="col-sm-2 control-label"></label>
@@ -65,14 +66,113 @@
                             </div>
                         </div>
                         <div class="form-footer">
-                            <input type="submit" value="Salvar" class="btn btn-success btn-ef btn-ef-4 btn-ef-4c pull-right" />
-                            <button asp-action="Index" class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c"><i class="fa fa-arrow-left"></i>Cancelar</button>
+
+                            <div class="form-footer">
+                                <input type="submit" value="Salvar" class="btn btn-success btn-ef btn-ef-4 btn-ef-4c pull-right" />
+                                <button asp-action="Index" class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c"><i class="fa fa-arrow-left"></i>Cancelar</button>
+                            </div>
+
                         </div>
-                    </form>
-                </div>
-                <!-- /tile body -->
-            </section>
-            <!-- /tile -->
+                    </div>
+                    <!-- /tile body -->
+                </section>
+                <!-- /tile -->
+            </div>
+
         </div>
-    </div>
+        <div class="col-md-12">
+            <section class="tile">
+                <div class="tile-header dvd dvd-btm">
+                    <h1 class="custom-font"><strong>Musicos</strong></h1>
+                    <ul class="controls">
+                        <li>
+                            <a role="button" tabindex="0" id="add-entry" class="addMusico"><i class="fa fa-plus mr-5"></i>Nova Info Musico</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tile-body">
+                    <div class="table-responsive" id="CreateFormMusico">
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-md-12">
+            <section class="tile">
+                <div class="tile-header dvd dvd-btm">
+                    <h1 class="custom-font"><strong>Frequentadores</strong></h1>
+                    <ul class="controls">
+                        <li>
+                            <a role="button" tabindex="0" id="add-entry" class="addFrequentador"><i class="fa fa-plus mr-5"></i>Nova Info Frequentador</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tile-body">
+                    <div class="table-responsive" id="CreateFormFrequentador">
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-md-12">
+            <section class="tile">
+                <div class="tile-header dvd dvd-btm">
+                    <h1 class="custom-font"><strong>Vozes</strong></h1>
+                    <ul class="controls">
+                        <li>
+                            <a role="button" tabindex="0" id="add-entry" class="addVoz"><i class="fa fa-plus mr-5"></i>Nova Info Voz</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tile-body">
+                    <div class="table-responsive" id="CreateFormVoz">
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
 </div>
+@section PageScripts {
+    <script>
+        $(window).load(function () {
+            $(".addMusico").on("click",
+                function() {
+                    $.ajax({
+                        url: '@Url.Action("AddMusico", "Narrativa")'
+                    }).success(function(partialView) {
+                        $('#CreateFormMusico').append(partialView);
+                    });
+                });
+
+            $(".addFrequentador").on("click",
+                function() {
+                    $.ajax({
+                        url: '@Url.Action("AddFrequentador", "Narrativa")'
+                    }).success(function(partialView) {
+                        $('#CreateFormFrequentador').append(partialView);
+                    });
+                });
+
+            $(".addVoz").on("click",
+                function() {
+                    $.ajax({
+                        url: '@Url.Action("AddVoz", "Narrativa")'
+                    }).success(function(partialView) {
+                        $('#CreateFormVoz').append(partialView);
+                    });
+                });
+
+            $('body').on("click", '*[data-action="removeItem"]', function (e) {
+                e.stopPropagation();
+                var btn = $(this);
+                var row = btn.closest('td').parent('tr');
+                row.remove();
+            });
+
+        });
+    </script>
+}
+

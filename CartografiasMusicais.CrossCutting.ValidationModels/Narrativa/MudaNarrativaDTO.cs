@@ -25,5 +25,11 @@ namespace CartografiasMusicais.CrossCutting.ValidationModels.Narrativa
         [ValidExtension(".jpg,.jpeg,.png,.JPG,.JPEG,.PNG")]
         public IFormFile Imagem { get; set; }
         public string CaminhoImagem { get; set; }
+        public IList<NarrativaItemValidationModel> Musicos { get; set; }
+        public IList<NarrativaItemValidationModel> Frequentadores { get; set; }
+        public IList<NarrativaItemValidationModel> Vozes { get; set; }
+
+
+
     }
 }
