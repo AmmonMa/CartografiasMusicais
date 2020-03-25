@@ -14,8 +14,7 @@ namespace CartografiasMusicais.CrossCutting.ValidationModels.Narrativa
         [Display(Name = "Descrição")]
         [Required(ErrorMessage = "Descrição é obrigatório")]
         public string Descricao { get; set; }
-        [Display(Name = "Link do Video")]
-        [Required(ErrorMessage = "Link do Video é obrigatório")]
+        [Display(Name = "Codigo do Video")]
         public string Video { get; set; }
         [Display(Name = "Cidade")]
         [Required(ErrorMessage = "Cidade é obrigatório")]

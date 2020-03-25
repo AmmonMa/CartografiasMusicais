@@ -10,8 +10,10 @@ namespace CartografiasMusicais.CrossCutting.ValidationModels.Narrativa
     public class NarrativaItemValidationModel
     {
         public int? Id { get; set; }
+        [Display(Name = "Nome")]
+        [Required(ErrorMessage = "Nome é obrigatório")]
+        public string Nome { get; set; }
         [Display(Name = "Descrição")]
-        [Required(ErrorMessage = "Descrição é obrigatório")]
         public string Descricao { get; set; }
         [Display(Name = "Imagem")]
         [ValidExtension(".jpg,.jpeg,.png,.JPG,.JPEG,.PNG")]

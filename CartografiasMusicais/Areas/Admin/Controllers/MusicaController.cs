@@ -51,6 +51,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
 
                 await Context.Musicas.AddAsync(new Musica
                 {
+                    Nome = obj.Nome,
                     Descricao = obj.Descricao,
                     Video = obj.Video,
                     CidadeId = obj.CidadeId,
@@ -73,6 +74,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             var model = new MudaMusicaDTO
             {
                 Id = musica.Id,
+                Nome = musica.Nome,
                 Descricao = musica.Descricao,
                 Video = musica.Video,
                 CidadeId = musica.CidadeId,
@@ -90,6 +92,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             var musica = await Context.Musicas.FirstOrDefaultAsync(x => x.Id == obj.Id);
             if (ModelState.IsValid && musica != null)
             {
+                musica.Nome = obj.Nome;
                 musica.Descricao = obj.Descricao;
                 musica.Video = obj.Video;
                 musica.CidadeId = obj.CidadeId;

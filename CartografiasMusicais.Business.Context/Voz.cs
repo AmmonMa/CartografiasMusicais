@@ -5,10 +5,11 @@ using System.Text;
 
 namespace CartografiasMusicais.Business.Context
 {
-    [Table("Vozes")]
+    [Table("vozes")]
     public class Voz
     {
         public int Id { get; set; }
+        public string Nome { get; set; }
         public string Descricao { get; set; }
         public string Imagem { get; set; }
         public int NarrativaId { get; set; }

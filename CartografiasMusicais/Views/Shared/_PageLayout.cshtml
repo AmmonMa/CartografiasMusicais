@@ -1,0 +1,118 @@
+﻿
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cartografias Musicais do RJ</title>
+
+    <!-- Bootstrap -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/css/animate.min.css" rel="stylesheet">
+    <link href="~/css/animate.css" rel="stylesheet" />
+
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/slick.css" rel="stylesheet">
+    <link href="~/css/slick-theme.css" rel="stylesheet">
+    <link href="~/css/style-custom.css" rel="stylesheet">
+    <link href="~/css/estrutura.css" rel="stylesheet">
+
+</head>
+
+
+
+
+
+<body id="estrutura">
+
+    <!-- Topo 1 internas -->
+    <div class="container-fluid topo-1"></div>
+
+    <!-- Topo 2 internas -->
+    <div class="container-fluid topo2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 area-titulo">
+                    <a href="/"><h4>Cartografias Musicais do RJ</h4></a>
+                </div>
+
+                <div class="col-md-6 area-titulo">
+                    <div class="nav-topo">
+                        <ul>
+                            <li><a href="/espacos/">Espaços</a></li>
+                            <li><a href="/musicas/">Músicas</a></li>
+                            <li><a href="/grupos/">Grupos</a></li>
+                            <li><a href="/corpos/">Corpos</a></li>
+                            <li><a href="/narrativas/">Narrativas</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Corpo do site -->
+    <div class="container-fluid" id="corpo-estrutura">
+        @RenderBody()
+    </div>
+
+
+
+    <!-- Footer 1 -->
+    <div class="container-fluid footer-1">
+        <div class="row ">
+            <div class="col-md-3 col-sm-12 menu-footer">
+                <center>
+                    <div id="menu-footer">
+                        <ul>
+                            <li><a href="/apresenta/">Apresentação</a></li>
+                            <li><a href="/equipe/">Equipe</a></li>
+                            <li><a href="/contato/">Contato</a></li>
+                        </ul>
+                    </div>
+                </center>
+            </div>
+            <div class="col-md-6 "><p>Cartografias Sensíveis das Cidades do Estado do Rio de Janeiro</p></div>
+        </div>
+    </div>
+
+    <!-- Footer 2 -->
+
+    <div class="container-fluid" id="footer-2">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9" id="parceiros">
+                <span class="logopar"><img src="data:image/webp;base64,UklGRmwEAABXRUJQVlA4IGAEAADwFgCdASpeAB4APm0skkYkIiGhLVmbaIANiWQAz1wW/wWRRgOYB6E/MBuZnUQbyxWQPxV85fFV6dSL/ZX7f+UvIDtL/5neCOP/yf/M90B6Ad53+cf5X0v7wagB+YP+J6eP+f5a/oX/t/374DP5b/SP9h6wHUpfsshJr8neI76pVb6kuteDzhHxtKPZ/6ZBFyjIS2ZxBZxLJBLj9rQr2yTzw/3mzTpZRrXBTD7lBoN1inAKBUcRTwyApXJl13egBwAA/v8Sjdx9y2occ6E7Y+2swHQWfUtTOg9c6d4NRuY4KcbXh/eylGmFjjf/8Oth6a+KxqayuU/T+E760NT01e4S/4ZKFVVr/AafBJ7o3S/gkDzeMeiKfHumiQk35D+7iJ9TPf8upB2dRGEaII1DpYgb+N9tCIUZdIcDbjzEfwXmfl/LDMUAm/cNvwMfoGFEGv66diKF3UqTOMj7m8ics1gzv3aOjl5xit6LMaKLq7KYZKFTxwKhfBbqL8Jt4T1jc3kN+/MyF+TQsK68E3FAh5T+/PxU9y9vrNNKG5UJof07sbCwIclPspGX+hAI1bzVl3InmR8KD6B7Fak4u/4Y+KKkMGQhBQIS223vKYy5U6f/+ngES/F3FcKA0cW/wKXdu+zVUb/wG5SIM1ZA3P7zn60X/e/7gPNZ7CWfUQZEcVt1Vj/antLO4lRoPAnY8IaL3Vh7+ozc0pjR70xiN7fAfJaIgXtJ73Ggp/KxaHC65oWxAb1N/0wvSgB+k85SpIA8BG/jUY8KFU+fJeuYxl7QjCPD7Pf125k/2f8ggnLBTIXl7EfD9fZkX45xMP7uresW6GX974JE0tVt9bP9M04khrXdUD4DviDM8VaRyzxHblCvfoJWzl8PofdrZWgc8LVbu5HzVIc+gDO00bQwRYEXB6qYb/dnY7AoWbwGMk2r/y0fS4jkTZERfnI3OXvHo9+39tQcrZhR0eSj8cavexxWlQyAm53TdcHY3gZIB9t0Oeeg6EiiSAhCAwYUiIdeT/J2lwuUFxLZherOz/n3wfyt5+qYXwYEGE01y5vLC+bv1U/0oYHKjKY7u/OxybrZQ0TlLz3qop0jGHMfrjW31U3v6tVrPjRv8XFlfXL6wsNgjAjzu9BF5my7inbQUjuzXJCmOQ2uJMiD6e+WGcmN1Dkr+DJyaJLm/rgaeSyVZlIUaE5H/0GzQ/5kUl+/RXD7NxCsvWQ6zoH+0v4LaKP995vNq1fMYQmPDLcbNajVvPBYKzjRBB1QWG5SKOGKuZVy3kccr0XSj+o+Km2hMzt7xanbwBNg7BEwUrv1zCxBs9wGJy7PHu3zs248rLbh36x2kWRleQhjiDxGOVKdVWhsmK8j5cV1ZXjEQCFCTfO5tGvosypIk9WC/LjV86TRkxl/5Vu5T3SWhOj1G76RjP2frsFU6f8TGPLG468wkHZgGE3C3iqP63sknY3NR+0xxOVI3NFpU92F7icG/DD7tqzymtuJJYAA" alt="Logo Faperj" data-pagespeed-url-hash="1648021307" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></span>
+                <span class="logopar"><img src="data:image/webp;base64,UklGRioEAABXRUJQVlA4IB4EAAAwEwCdASpbAB4APm0qkkYkIiGhKrgO+IANiWwAzfMS+ye9X+druMBtgPMB0JPKA6z30E+llrLXQ1+mnzXZre+/lPn894Ixr/i+MD6iehb+R/6Ljb6AH5v8+7OG9DewX+sfWiR5/mZkAzqk+qcgp65bhEAk1nJvYX/vM9NlgGMRbuGNlDDlZpONQWsj1JMnMSf9BRmh/f3vR1ITT/feRInySeAA/v7/xwHIjyQxPd4klP5Xf+GDz6SmmeOwbNUn91n0Ijr7TuMJhu8lY82uTY+LTEbfI0ZqPLuk8HbjXa8L4Yp15YNOjDRaAzFKwcd39tk/RRPgwQL2kKZQlKS86rOszM9GuWEaEfD6owz97O05zVo3jZdkke0gg1HLM8NS9bvu1qr40yP7I+DfRPAbJLvYJRl38gHPjNKzIh2vvqQzx98NDUoiYf1BVxTEabZG8j2qJKw71vScQRu3Ba6Z525A95e9yvjZabP3dj9XhSlMZevvzft/iZo3yJj90e3I2NLuehgMCrVLUOk+SXtHyJHaFg41fBRs/2HF3ppl15vRcRor2AYWy9nHryYuZfpWDqx/Eo4KcA3/PZ1IhfAiT5hXeVQdRPWr/v/ZbFA/rx2170+aQrR7t0cPmJzWxpyZxw1Fn1peSmmzIUYYPWGTytKDXeMxfiPwDO0xXblHcpX83XfW/79Kdb8/HdzUQOjlYrEmn+Vmqsa0kou60kFEwX6DUgotlSce1IZBRYXDh9w4UBeQc/+GC6+vWuz2s9a+6fdBn0x/FyrfnOQmmwP3jzTg3H/TsHGWW5E9qMMB92Z9eBKz69Y8zbwkclGDXlIG//qQ7jKLj96htDyOtiNWF4Wef6vcUw0nszk7+vHwPZjPWT/k1/8S7zGmphNBsAfvRaXBoUGt2kbvIPL3jP9vBtzVs+6cNFbmatXcIT9ZUj+z8z/8peNpEUDEJUCdP+f2rfEk7RYVImxqHILiQ0fIR2k8EQFEjJZXtND8nkDn3n99W1L3O7D4CHbVQPQ9IpKEoUYVt43+8YGdUvK83uEJXjneCUQkzfqL5bpwfTK+UHpTU5B8C5DMx+BHarvcEzQixcoermN2dg6J3EW9fFu8IijnUByKPdpGGxbidPfsQN9v614aZA82KV+HZXrktWb+4uzDAzrNkdpZPLlwJ1zBQe9G4NF9ZAe7lL/Vz0vbSxBI2L9b3ORNamNurfPflUxRQnDM8Rt8OFaLql2TkjmoNBVQNoYGh+z6YJw021ufqpHKDr8DI/YlZoMt7HumWWPwlCeo/YA+lOoPs0uOw/w2vsQru0Evx9Te8SZT1O99MmttDnbCFu1gTD7kvMrdwCCba/T0/FPBuhQNkAli4gmlNcaU/8twFTLyevKxE05KKjd98arxUjHYjWdib7eAAAAA" alt="Logo Faperj" data-pagespeed-url-hash="1942521228" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></span>
+                <span class="logopar"><img src="data:image/webp;base64,UklGRrwEAABXRUJQVlA4ILAEAAAwGACdASpvAB4APm0wkkckIyGhK3ZqqIANiWwAxBdo+9fkZ0B/ID6HgDyaOWOcB5gHigeovzAfrZ+0fvM/039SfcR/nd8o9ADyzv3A+FP90/SzuW3RR+gj3f9dtrvoGfxX/AZLR9Q/zn2tXQLGr5+n+75Yvof/uf4X4BP1h3W5gFOLnv8r6N9sDxufPfEu9oyNpwtYGTk51BaQoFvoez1dNfxt2V+E7PImnBOB8a3DH78dyL/G3SSj/mW59ut3Da/Zq3MCIsWXA/sgAP7/aomcYCu0DR96LNjBXi9e0ShudimZUSKl5NMLuwuKXA4vj5wV+j9/AiE+ToiXGdT+OrhJX/DL26Na05TPXf0NHWzH0IHTPRSkSGy0MPxuKHP4fogNxmYxAzLGgtf8yxafqfAzdpzSxquWr7AyN8eYdLY/XjagfxRw0//F0NRnq0f8GvJUT8qZbFhLPKswzFrAfd1RfOa+8gxjcHIjVQBum6q+MhR0ncNLa+nx+Hc+cqdDy2moJkB5aHmdyXBLP2HW/xJmevEn6v2Owvar3x3SisKwc4ve/LpeDeZs8jjpubUTfqqrHhfa2eQOViQXuG1kJpzttOqH4Pkk1cXJqpFVfcNttGpL5VP3QpHEPU14aiatdBqu2aivYffuCSuusQImjXt0czA4tZOW//o8/M9He1vVPswloA/EDkl/N5H72vbWZ640GDvNJFetRWfHxdyR+WK/f6Yt9WG9M6ZZ7sh7TB8S7DqZtS9NKajzygdoaYMeCnmK/6FvEL5Ib3oqVvHBoCY+HHxnaEyUrm8WQmk3+lY0WsnPzmHQHIGv3Mv7RATWMt6OI92UMM1AyyE7z8EsPfmi9faQhDHv3M98WFcwrlN5nkZ9PY0OW9o9nUvZR3kbBoMMP/PH/rzPgmgF3APcq/eDPDJ0NAkZc2ppVl7/Gxr417qe0pzZ909ALRqvhK/vgxvWac458/irjNQ3DKDaBTkfxtB7kT1F3eWy0w7LnTgcT2cbCphYUhbzOiETbJO/0nnXbOO4zavU3d649EWzAAgIk1BHk8laSNkyrppUD5GVLXrhtvLOnYYd2JGCfWFNPShvgAbBiOez6DK2R+//QxHbeZ+GTxmFNxGH+z/a3ThAR9juxAIM+SIY4RZwShMGZJH/wsU6vAlsZqc1cv93YrwJJDgHn9yQgkcsNrSafXPLBEOe9suPQQBV84u64jUsytJIjkWQ4U55C/P9cNX0fXnvjlKLuPVgYzglAyWQcXSvOP9ErYIkYKi/hzVzoc+Mrd9zpUSGTxTwV8R5zRXLjrk0Jvz6AOVHYvGjdvAcZOGrBSOt56GgzLeqbeWJwUpNt2L+x+zJzxOoetmYdmeJ4AKXieAeAGYDHEa1kHY2dEDWO1+IH/giZzRuYLyZ8SSnLuVPoJDwVJf1GRucArd8Y3POlxTb6DrffbJzSwsJOZT8cND9Q/UV6RzZLILvo8m5rZKp0ZSLAH92oryU+TTi63VX5F4SOpvL9/PBJfZHaXTmZUn/143jVFaieA35svK1ctvo/Yy5UrCJLEDEKbrIaNxv8ribB03Q2vhE4ghTZC7Ex+6Rthay5OucFo6PNYwwAAA=" alt="Logo Faperj" data-pagespeed-url-hash="2237021149" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></span>
+                <span class="logopar"><img src="data:image/webp;base64,UklGRswBAABXRUJQVlA4IMABAAAwCgCdASpaAB4APm0ukkYkIqGhKqsAgA2JaQASBFn09Y39DKr8LNMNCAyNDPb9C+wN+sW+AHe0l+T/M8rfvNURTE4D51Bm6puW0RMyCaBPdvCk1AN6U4q+SAAA/vzif+VWgNX73W9Vm+AMH35I/Mxc+R7mEx6zr+2aUbzK2L75q+Yj3IuHnmsB3ZWXsFVwf33uR6V6I1mbGwF9XYy/1SijGOUvNnDWxmDvWUjLOxu1l0GxrLEw31N0MavSFbu/EDz6f/qTra0dW3J9jLw19RvlBHZ03LeSzQ9X3/GUhhM710Irwpa4Mx8QajjsnN1siMy9/BkJoBtWLVsyPifre/3O2s3AX1T118P+qYjIdClM1F9CUvJ+UQk06qPCYNvtCbJGR1IxlvBiP9hCKa51loh//1UvrQ6bdpulL2/p275uRVBW75ke+0+TLePuePmTcT3FlE0DZ+7Vxv3l+NXQBLTwX8MtdFws8f7m3eFP0kn/Q3Qg1AObZyyBfw6YYID6VcOsjryfdvbuzIUflGqEpfgQ06PIokn/OiBrFmIkwPJI27hMUUA4d0LBelJkWgyciwsX4RKJ5BTZn8VvsnNoAAAA" alt="Logo Faperj" data-pagespeed-url-hash="2531521070" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></span>
+                <span class="logopar"><img src="data:image/webp;base64,UklGRqoCAABXRUJQVlA4IJ4CAAAQDwCdASpwAB4APm0skkWkIqGYDt0kQAbEsQBovAbA+A4hQOaK1ED+Lf4z2AP2AmqvK67gWiv/M8ZvcAf4D0g8DOOT/SfbN1Evoz/n/1X4DP1O/43YIRVT/j9ImuFJlvVLeoI22i1v+PfM0fWAG0HEf3d1p1RJfqs25Ofky8W5DgAA/vz0GAhGAkWEWmNxmTIAFGtqX9JI7IK2OAazjvyzPi+2FfuOCea6yZ0fyTZ4EjhwdF0z3srumZulgkM2qTH1Q+4yaYcRtjgT6ru/rkq/6XQSfIg8lOO9AF/o2gLXryB5iKL1HEMdeHGdyvLz5tjGh9h/nS+3jQI7xs8hclZ4sY3f/tgVhT5JhVpaRu1XvAP+Ly/vB7l1hVE1LjEEZo1iBuriR3q2n/bP5lNfSKVoUj2mUJ9UzxR+FKo38p25+pX6Oi137R3qLfWd0lOQLOSEkuVJsz82KbsKo1lec69P9d4Z3/h6GBXKK1ZftWOZx864B3uyR8iNcVxctOD0FzbVXt7bgaFxoaTEhlteDpEe+5nlSwr0k79gSdiYCe6YuoM5MuEWYaQjXdHnP4xF+1bOwkd/TVeRjejPeZWoH+R9gCXPksntCbuviDKTRkIh1j/LoPtvx9fUajn8MAxvXf9PQOnA/96j9VlQlwa0wcGSpHV9FKxP8TaQcj90/HarcPI+tfWk8bJu6zYx/aPwL73sZZvxUKefnAZyeEP8a64/oFfqOrU3+GPw59mJS6NvpJtU0FJZA61lgPRoNPFUINXhE14KfV8EoeVLNI9Wf/UMMKrEutNta/CGshQyKpvbLNqX2mLW3vZIJLIm/N9LuHeY3eJLuYdWMSDkW64kctuUPxMjS2Ec7XzI2wMv/mLv5rgBJstAOlpp69BHqCAA" alt="Logo Faperj" data-pagespeed-url-hash="2826020991" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></span>
+                <span class="logopar"><img src="data:image/webp;base64,UklGRq4BAABXRUJQVlA4IKIBAADQCACdASpAAB4APmkmkUWkIaGZ/M1UQAaEsoBf8fL32zwXNFKoIZz4/XtyfNspPAsjkIe1uax/igjCPTX2PZGWkQ2Bs4YY3vbX8W7AJ+2AAP7/MsLXP0naX7K4fer9f/Jg1kcuRdyCoZwoVGTDwYB8NuaQ9nr6hG/eRboviKHzNCK5+H44SbaB4zlTdfHmd8ATxO1u19Yipofnr9VJKcLNLiJpXyptC/IO5wz+UWti86XOdzkcfa4xc1zRhRKH8dxRAYIPZCVuvVbkZX1FjukZvS8xR97OAslrRRP1pyCkTkP1WCMo0juoNJ4+1lyv09XLJp9x/+1Y+nrOKA9cblVwsrcXeRJlUd5gLjWaD0w31hszgg9zZ3VY8H8ovKFQbwqZ/k/ac479oUowoDyR4YadPv1+gowyudA1j9tD0vb5ul58hHRpMFCv4MdD/kxFhsNFqBDnjzxMc9wVgDqlkIVS89nViRoKKVhXciVEDHhaJLR+Mm3bnptPANYqHBeCsh1QdCD4Ore+1R+RmQuEmenVarFSSn+aj9Go3pQr6JfUTcAA" alt="Logo Faperj" data-pagespeed-url-hash="3120520912" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="~/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="~/js/bootstrap.min.js"></script>
+<!--	<script src="~/js/jquery.prettyPhoto.js"></script> -->
+<!--  <script src="~/js/jquery.isotope.min.js"></script>-->
+<script src="~/js/wow.min.js"></script>
+<!--	<script src="~/js/jquery.easing.min.js"></script>-->
+<!--	<script src="~/js/main.js"></script> -->
+<script src="~/js/slick.min.js"></script>
+
+
+<script type="text/javascript">$(document).on('ready', function () { $('.regular').slick({ dots: true, infinite: false, speed: 300, slidesToShow: 7, slidesToScroll: 7, responsive: [{ breakpoint: 1024, settings: { slidesToShow: 5, slidesToScroll: 5, infinite: true, dots: true } }, { breakpoint: 600, settings: { slidesToShow: 4, slidesToScroll: 4 } }, { breakpoint: 480, settings: { slidesToShow: 2, slidesToScroll: 2 } }] }); });</script>

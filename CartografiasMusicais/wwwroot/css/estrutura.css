@@ -72,7 +72,7 @@ border-bottom:3px solid #EEB108;
 	background: #B3B3B3;
 	padding-top:5px;
 	height:350px;
-
+	overflow: auto;
 
 }
 
@@ -160,7 +160,7 @@ text-align: justify;
 
 
     .slider {
-        width: 80%;
+        width: 95%;
         margin: 30px ;
 
 

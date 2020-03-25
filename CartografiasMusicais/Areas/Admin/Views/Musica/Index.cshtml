@@ -43,6 +43,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Nome</th>
                                     <th>Cidade</th>
                                     <th>Descrição</th>
                                     <th>Imagem</th>
@@ -54,6 +55,7 @@
                                 {
                                     <tr class="odd">
                                         <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Nome)</td>
                                         @if (item.Cidade != null)
                                         {
                                             <td>@item.Cidade.Nome</td>

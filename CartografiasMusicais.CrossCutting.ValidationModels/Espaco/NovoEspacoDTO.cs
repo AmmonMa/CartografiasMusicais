@@ -9,6 +9,9 @@ namespace CartografiasMusicais.CrossCutting.ValidationModels.Espaco
 {
     public class NovoEspacoDTO
     {
+        [Display(Name = "Nome")]
+        [Required(ErrorMessage = "Nome é obrigatório")]
+        public string Nome { get; set; }
         [Display(Name = "Descrição")]
         [Required(ErrorMessage = "Descrição é obrigatório")]
         public string Descricao { get; set; }

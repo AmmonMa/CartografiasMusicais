@@ -9,11 +9,13 @@ namespace CartografiasMusicais.CrossCutting.ValidationModels.Corpo
 {
     public class NovoCorpoDTO
     {
+        [Display(Name = "Nome")]
+        [Required(ErrorMessage = "Nome é obrigatório")]
+        public string Nome { get; set; }
         [Display(Name = "Descrição")]
         [Required(ErrorMessage = "Descrição é obrigatório")]
         public string Descricao { get; set; }
-        [Display(Name = "Link do Video")]
-        [Required(ErrorMessage = "Link do Video é obrigatório")]
+        [Display(Name = "Codigo do Video")]
         public string Video { get; set; }
         [Display(Name = "Cidade")]
         [Required(ErrorMessage = "Cidade é obrigatório")]

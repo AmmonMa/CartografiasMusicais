@@ -49,8 +49,9 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
 
                 await Context.Espacos.AddAsync(new Espaco
                 {
+                    Nome = obj.Nome,
                     Descricao = obj.Descricao,
-                    Slug = SlugHelper.GenerateSlug(obj.Descricao).ToString(),
+                    Slug = SlugHelper.GenerateSlug(obj.Nome).ToString(),
                     Imagem = ((obj.Imagem != null) ? await FileService
                                     .UploadFileAsync(obj.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
@@ -64,12 +65,13 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            var cidade = await Context.Espacos.FirstOrDefaultAsync(x => x.Id == id);
+            var espaco = await Context.Espacos.FirstOrDefaultAsync(x => x.Id == id);
             var model = new MudaEspacoDTO
             {
-                Id = cidade.Id,
-                Descricao = cidade.Descricao,
-                CaminhoImagem = cidade.Imagem
+                Id = espaco.Id,
+                Nome = espaco.Nome,
+                Descricao = espaco.Descricao,
+                CaminhoImagem = espaco.Imagem
             };
             return View(model);
         }
@@ -81,8 +83,9 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             var espaco = await Context.Espacos.FirstOrDefaultAsync(x => x.Id == obj.Id);
             if (ModelState.IsValid && espaco != null)
             {
+                espaco.Nome = obj.Nome;
                 espaco.Descricao = obj.Descricao;
-                espaco.Slug = SlugHelper.GenerateSlug(obj.Descricao).ToString();
+                espaco.Slug = SlugHelper.GenerateSlug(obj.Nome).ToString();
                 if (obj.Imagem != null)
                 {
                     espaco.Imagem = await FileService

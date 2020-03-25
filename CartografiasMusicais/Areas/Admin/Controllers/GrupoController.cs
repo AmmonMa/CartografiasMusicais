@@ -51,6 +51,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
 
                 await Context.Grupos.AddAsync(new Grupo
                 {
+                    Nome = obj.Nome,
                     Descricao = obj.Descricao,
                     Video = obj.Video,
                     CidadeId = obj.CidadeId,
@@ -73,6 +74,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             var model = new MudaGrupoDTO
             {
                 Id = grupo.Id,
+                Nome = grupo.Nome,
                 Descricao = grupo.Descricao,
                 Video = grupo.Video,
                 CidadeId = grupo.CidadeId,
@@ -91,6 +93,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             if (ModelState.IsValid && grupo != null)
             {
                 grupo.Id = obj.Id;
+                grupo.Nome = obj.Nome;
                 grupo.Descricao = obj.Descricao;
                 grupo.Video = obj.Video;
                 grupo.CidadeId = obj.CidadeId;

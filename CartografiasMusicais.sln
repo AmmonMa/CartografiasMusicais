@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CartografiasMusicais.CrossC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CartografiasMusicais.CrossCutting.Utils", "CartografiasMusicais.CrossCutting.Utils\CartografiasMusicais.CrossCutting.Utils.csproj", "{F480CDD7-6E3E-4CA4-9847-4879F0CC4AE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CartografiasMusicais.Business.Services", "CartografiasMusicais.Business.Context.Services\CartografiasMusicais.Business.Services.csproj", "{77C9EAA2-BB02-4A17-B517-D145FA319698}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{F480CDD7-6E3E-4CA4-9847-4879F0CC4AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F480CDD7-6E3E-4CA4-9847-4879F0CC4AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F480CDD7-6E3E-4CA4-9847-4879F0CC4AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77C9EAA2-BB02-4A17-B517-D145FA319698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C9EAA2-BB02-4A17-B517-D145FA319698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77C9EAA2-BB02-4A17-B517-D145FA319698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C9EAA2-BB02-4A17-B517-D145FA319698}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{DC41727B-9886-4D4D-878E-A8EBF53F05DE} = {2E219A27-FA83-463B-A5EC-425BB8E79240}
 		{DEFC080D-613B-4D21-9842-45E7C31A1BD2} = {CBB17F1C-941A-4B2A-B2EA-6E00F21D5379}
 		{F480CDD7-6E3E-4CA4-9847-4879F0CC4AE6} = {CBB17F1C-941A-4B2A-B2EA-6E00F21D5379}
+		{77C9EAA2-BB02-4A17-B517-D145FA319698} = {2E219A27-FA83-463B-A5EC-425BB8E79240}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F9825070-6EC6-4B94-ADBB-6CCCDAF46CA5}

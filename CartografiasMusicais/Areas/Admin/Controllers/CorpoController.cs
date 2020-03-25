@@ -51,6 +51,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
 
                 await Context.Corpos.AddAsync(new Corpo
                 {
+                    Nome = obj.Nome,
                     Descricao = obj.Descricao,
                     Video = obj.Video,
                     CidadeId = obj.CidadeId,
@@ -74,6 +75,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             {
                 Id = corpo.Id,
                 Descricao = corpo.Descricao,
+                Nome = corpo.Nome,
                 Video = corpo.Video,
                 CidadeId = corpo.CidadeId,
                 Slug = corpo.Slug,
@@ -92,6 +94,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             {
                 corpo.Id = obj.Id;
                 corpo.Descricao = obj.Descricao;
+                corpo.Nome = obj.Nome;
                 corpo.Video = obj.Video;
                 corpo.CidadeId = obj.CidadeId;
 
@@ -107,6 +110,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                 await Context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            Console.WriteLine(ModelState);
             ViewBag.Cidades = new SelectList(Context.Cidades.OrderByDescending(x => x.Id).ToList(), "Id", "Nome");
             return View(obj);
         }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CartografiasMusicais.Business.Context
 {
-    [Table("Cidades")]
+    [Table("cidades")]
     public class Cidade
     {
         public int Id { get; set; }
