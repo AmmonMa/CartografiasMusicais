@@ -90,7 +90,7 @@
 
 @section PageScripts {
     <script>
-        function callView(slug) {
+        function callView(link) {
             $.get('@Url.Action("Video", "GruposView")', { link: link }, function (res) {
                 $("#cenario_alvo").html(res);
             });       

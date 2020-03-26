@@ -43,23 +43,26 @@
                     @foreach (var e in Model.Musicas)
                     {
 
-                        <div>
-                            @if (string.IsNullOrEmpty(e.Video))
-                            {
-                                <a href="/@Model.Slug/musicas/@e.Slug">
-                                    <img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, e.Imagem)"
-                                         alt="@e.Descricao" data-pagespeed-url-hash="425040009"
-                                         onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
-                                </a>
+                    <div>
+                        @if (string.IsNullOrEmpty(e.Video))
+                        {
+                            <a href="/@Model.Slug/musicas/@e.Slug">
+                                <img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, e.Imagem)"
+                                     alt="@e.Descricao" data-pagespeed-url-hash="425040009"
+                                     onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                            </a>
 
-                            }
-                            else
-                            {
-                                <div class="videocena">
-                                    <iframe height="350" width="640" src="https://www.youtube-nocookie.com/embed/@Model.Video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-                                </div>
-                            }
-                        </div>
+                        }
+                        else
+                        {
+                            <a href="#" onclick="callView('@e.Video'); return false;">
+
+                                <img src="https://img.youtube.com/vi/@e.Video/0.jpg"
+                                     alt="@e.Descricao" data-pagespeed-url-hash="425040009"
+                                     onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                            </a>
+                        }
+                    </div>
 
                     }
                 </div>
@@ -135,7 +138,7 @@
 
 @section PageScripts {
     <script>
-        function callView(slug) {
+        function callView(link) {
             $.get('@Url.Action("Video", "CidadeView")', { link: link }, function (res) {
                 $("#cenario_alvo").html(res);
             });
