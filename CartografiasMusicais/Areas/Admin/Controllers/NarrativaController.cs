@@ -61,7 +61,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     Imagem = ((obj.Imagem != null) ? await FileService
                                     .UploadFileAsync(obj.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{obj.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}") : null)
+                                                    $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}") : null)
                 };
                 var musicos = obj.Musicos ?? new List<NarrativaItemValidationModel>();
                 foreach (var m in musicos)
@@ -74,7 +74,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         Imagem = ((m.Imagem != null) ? await FileService
                                     .UploadFileAsync(m.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{m.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(m.Imagem.FileName)}") : null)
+                                                    $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(m.Imagem.FileName)}") : null)
                     });
                 }
 
@@ -89,7 +89,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         Imagem = ((f.Imagem != null) ? await FileService
                                     .UploadFileAsync(f.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{f.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(f.Imagem.FileName)}") : null)
+                                                    $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(f.Imagem.FileName)}") : null)
                     });
                 }
 
@@ -104,7 +104,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         Imagem = ((v.Imagem != null) ? await FileService
                                     .UploadFileAsync(v.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{v.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : null)
+                                                    $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : null)
                     });
                 }
 
@@ -192,7 +192,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     narrativa.Imagem = await FileService
                                         .UploadFileAsync(obj.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/",
-                                                        $"{obj.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
+                                                        $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
                 }
 
                 narrativa.Musicos = new List<Musico>();
@@ -209,7 +209,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         n.Imagem = ((m.Imagem != null) ? await FileService
                                     .UploadFileAsync(m.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{m.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(m.Imagem.FileName)}") : n.Imagem);
+                                                    $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(m.Imagem.FileName)}") : n.Imagem);
                         narrativa.Musicos.Add(n);
                     }
                     else
@@ -222,7 +222,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                             Imagem = ((m.Imagem != null) ? await FileService
                                         .UploadFileAsync(m.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/",
-                                                        $"{m.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(m.Imagem.FileName)}") : null)
+                                                        $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(m.Imagem.FileName)}") : null)
                         });
                     }
                 }
@@ -241,7 +241,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         n.Imagem = ((f.Imagem != null) ? await FileService
                                     .UploadFileAsync(f.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{f.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(f.Imagem.FileName)}") : n.Imagem);
+                                                    $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(f.Imagem.FileName)}") : n.Imagem);
                         narrativa.Frequentadores.Add(n);
                     }
                     else
@@ -254,7 +254,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                             Imagem = ((f.Imagem != null) ? await FileService
                                         .UploadFileAsync(f.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/",
-                                                        $"{f.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(f.Imagem.FileName)}") : null)
+                                                        $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(f.Imagem.FileName)}") : null)
                         });
                     }
                 }
@@ -273,7 +273,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         n.Imagem = ((v.Imagem != null) ? await FileService
                                     .UploadFileAsync(v.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{v.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : n.Imagem);
+                                                    $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : n.Imagem);
                         narrativa.Vozes.Add(n);
                     }
                     else
@@ -286,7 +286,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                             Imagem = ((v.Imagem != null) ? await FileService
                                         .UploadFileAsync(v.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/",
-                                                        $"{v.Descricao}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : null)
+                                                        $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : null)
                         });
                     }
                 }

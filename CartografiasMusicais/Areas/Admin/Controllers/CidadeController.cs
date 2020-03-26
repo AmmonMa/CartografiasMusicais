@@ -56,7 +56,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     Imagem = ((obj.Imagem != null) ? await FileService
                                     .UploadFileAsync(obj.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{obj.Nome}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}") : null)
+                                                    $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}") : null)
                 });
                 await Context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -92,7 +92,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     cidade.Imagem = await FileService
                                         .UploadFileAsync(obj.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/",
-                                                        $"{obj.Nome}_{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
+                                                        $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
                 }
                 await Context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
