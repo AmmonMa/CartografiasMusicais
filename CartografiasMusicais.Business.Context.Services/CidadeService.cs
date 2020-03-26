@@ -19,7 +19,7 @@ namespace CartografiasMusicais.Business.Services
 
         public async Task<IList<Cidade>> List()
         {
-            return await Context.Cidades.OrderByDescending(x => x.Id).ToListAsync();
+            return await Context.Cidades.OrderBy(x => x.Id).ToListAsync();
         }
     }
 }

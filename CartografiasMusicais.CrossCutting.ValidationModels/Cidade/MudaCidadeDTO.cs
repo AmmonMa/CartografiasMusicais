@@ -13,6 +13,9 @@ namespace CartografiasMusicais.CrossCutting.ValidationModels.Cidade
         [Display(Name = "Nome da Cidade")]
         [Required(ErrorMessage = "Nome do clube é obrigatório")]
         public string Nome { get; set; }
+        [Display(Name = "Link do Video")]
+        [Required(ErrorMessage = "Link do Video é obrigatório")]
+        public string Video { get; set; }
         [Display(Name = "Descrição da Cidade")]
         [Required(ErrorMessage = "Descrição do clube é obrigatório")]
         public string Descricao { get; set; }

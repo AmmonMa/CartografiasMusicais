@@ -22,7 +22,7 @@
 
 
                 <div class="cenario">
-                    <center>
+                    <center id="cenario_alvo">
 
                         <script data-pagespeed-no-defer>
                             //<![CDATA[
@@ -60,7 +60,7 @@
                     @foreach (var e in ViewBag.Videos)
                     {
                         <div>
-                            <a href="/grupos/@e.Slug">
+                            <a href="#" onclick="callView('@e.Video'); return false;">
                                 <img src="https://img.youtube.com/vi/@e.Video/0.jpg"
                                      alt="@e.Nome" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
@@ -76,3 +76,12 @@
     @await Html.PartialAsync("/Views/Shared/Partial/_BoxDireito.cshtml")
 </div>
 
+@section PageScripts {
+    <script>
+        function callView(slug) {
+            $.get('@Url.Action("Video", "GruposView")', { link: link }, function (res) {
+                $("#cenario_alvo").html(res);
+            });
+        }
+    </script>
+}

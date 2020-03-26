@@ -51,6 +51,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                 await Context.Cidades.AddAsync(new Cidade
                 {
                     Nome = obj.Nome,
+                    Video = obj.Video,
                     Descricao = obj.Descricao,
                     Slug = SlugHelper.GenerateSlug(obj.Nome).ToString(),
                     Imagem = ((obj.Imagem != null) ? await FileService
@@ -71,6 +72,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             {
                 Id = cidade.Id,
                 Nome = cidade.Nome,
+                Video = cidade.Video,
                 Descricao = cidade.Descricao,
                 CaminhoImagem = cidade.Imagem
             };
@@ -85,6 +87,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             if (ModelState.IsValid && cidade != null)
             {
                 cidade.Nome = obj.Nome;
+                cidade.Video = obj.Video;
                 cidade.Descricao = obj.Descricao;
                 cidade.Slug = SlugHelper.GenerateSlug(obj.Nome).ToString();
                 if (obj.Imagem != null)

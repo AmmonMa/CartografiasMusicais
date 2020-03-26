@@ -8,7 +8,7 @@
             @foreach(var c in cidades)
             {
                 <span class="mini-local">
-                    <p>Rio de Janeiro</p>
+                    <p>@c.Nome</p>
                     <a href="/cidades/@c.Slug"><div class="cidade-ico">
                         <img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, c.Imagem)" style="width:160px;" data-pagespeed-url-hash="1989443410" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></div></a>
                 </span>

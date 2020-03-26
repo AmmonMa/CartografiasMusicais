@@ -22,5 +22,12 @@ namespace CartografiasMusicais.Controllers
             var model = await Context.Cidades.FirstOrDefaultAsync(x => x.Slug == slug);
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult Video(string link)
+        {
+            ViewBag.Link = link;
+            return View();
+        }
     }
 }

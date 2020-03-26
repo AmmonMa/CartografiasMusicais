@@ -44,5 +44,12 @@ namespace CartografiasMusicais.Controllers
             return View(cidade.Musicas.FirstOrDefault(x => x.Slug == slug));
 
         }
+
+        [HttpGet]
+        public IActionResult Video(string link)
+        {
+            ViewBag.Link = link;
+            return View();
+        }
     }
 }
