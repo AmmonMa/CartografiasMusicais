@@ -21,6 +21,8 @@ namespace CartografiasMusicais.Controllers
             var model = await Context.Corpos.OrderByDescending(x => x.Id).ToListAsync();
             ViewBag.Imagens = await Context.Corpos.Where(x => string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
             ViewBag.Videos = await Context.Corpos.Where(x => !string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
+            ViewBag.VideoDefault = await Context.Corpos.Where(x => !string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).FirstAsync();
+
             return View(model);
         }
 

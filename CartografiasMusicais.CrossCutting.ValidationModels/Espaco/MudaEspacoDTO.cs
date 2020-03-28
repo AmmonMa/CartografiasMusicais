@@ -13,7 +13,6 @@ namespace CartografiasMusicais.CrossCutting.ValidationModels.Espaco
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "Nome é obrigatório")]
         public string Nome { get; set; }
-
         [Display(Name = "Descrição")]
         [Required(ErrorMessage = "Descrição é obrigatório")]
         public string Descricao { get; set; }
@@ -21,6 +20,8 @@ namespace CartografiasMusicais.CrossCutting.ValidationModels.Espaco
         [Display(Name = "Imagem")]
         [ValidExtension(".jpg,.jpeg,.png,.JPG,.JPEG,.PNG")]
         public IFormFile Imagem { get; set; }
+        [Display(Name = "Codigo do Video")]
+        public string Video { get; set; }
         public string CaminhoImagem { get; set; }
     }
 }

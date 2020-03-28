@@ -51,6 +51,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                 {
                     Nome = obj.Nome,
                     Descricao = obj.Descricao,
+                    Video = obj.Video,
                     Slug = SlugHelper.GenerateSlug(obj.Nome).ToString(),
                     Imagem = ((obj.Imagem != null) ? await FileService
                                     .UploadFileAsync(obj.Imagem,
@@ -71,6 +72,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                 Id = espaco.Id,
                 Nome = espaco.Nome,
                 Descricao = espaco.Descricao,
+                Video = espaco.Video,
                 CaminhoImagem = espaco.Imagem
             };
             return View(model);
@@ -85,6 +87,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
             {
                 espaco.Nome = obj.Nome;
                 espaco.Descricao = obj.Descricao;
+                espaco.Video = obj.Video;
                 espaco.Slug = SlugHelper.GenerateSlug(obj.Nome).ToString();
                 if (obj.Imagem != null)
                 {

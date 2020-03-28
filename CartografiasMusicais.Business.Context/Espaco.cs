@@ -12,6 +12,7 @@ namespace CartografiasMusicais.Business.Context
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public string Imagem { get; set; }
+        public string Video { get; set; }
         public string Slug { get; set; }
     }
 }

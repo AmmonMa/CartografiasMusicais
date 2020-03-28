@@ -19,6 +19,8 @@ namespace CartografiasMusicais.CrossCutting.ValidationModels.Espaco
         [Display(Name = "Imagem")]
         [ValidExtension(".jpg,.jpeg,.png,.JPG,.JPEG,.PNG")]
         public IFormFile Imagem { get; set; }
+        [Display(Name = "Codigo do Video")]
+        public string Video { get; set; }
         public string CaminhoImagem { get; set; }
     }
 }

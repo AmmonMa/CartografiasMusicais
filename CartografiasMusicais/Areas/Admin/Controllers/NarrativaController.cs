@@ -54,7 +54,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     Descricao = obj.Descricao,
                     Video = obj.Video,
                     CidadeId = obj.CidadeId,
-                    Slug = SlugHelper.GenerateSlug(obj.Descricao).ToString(),
+                    // Slug = SlugHelper.GenerateSlug(obj.Descricao).ToString(),
                     Musicos = new List<Musico>(),
                     Frequentadores = new List<Frequentador>(),
                     Vozes = new List<Voz>(),
@@ -71,7 +71,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         Nome = m.Nome,
                         Video = m.Video,
                         Descricao = m.Descricao,
-                        Slug = SlugHelper.GenerateSlug(m.Nome).ToString(),
+                       // Slug = SlugHelper.GenerateSlug(m.Nome).ToString(),
                         Imagem = ((m.Imagem != null) ? await FileService
                                     .UploadFileAsync(m.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
@@ -87,7 +87,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         Nome = f.Nome,
                         Video = f.Video,
                         Descricao = f.Descricao,
-                        Slug = SlugHelper.GenerateSlug(f.Nome).ToString(),
+                        // Slug = SlugHelper.GenerateSlug(f.Nome).ToString(),
                         Imagem = ((f.Imagem != null) ? await FileService
                                     .UploadFileAsync(f.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
@@ -103,7 +103,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         Nome = v.Nome,
                         Video = v.Video,
                         Descricao = v.Descricao,
-                        Slug = SlugHelper.GenerateSlug(v.Nome).ToString(),
+                       // Slug = SlugHelper.GenerateSlug(v.Nome).ToString(),
                         Imagem = ((v.Imagem != null) ? await FileService
                                     .UploadFileAsync(v.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
@@ -128,7 +128,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                 Descricao = narrativa.Descricao,
                 Video = narrativa.Video,
                 CidadeId = narrativa.CidadeId,
-                Slug = narrativa.Slug,
+               // Slug = narrativa.Slug,
                 CaminhoImagem = narrativa.Imagem,
                 Musicos = new List<NarrativaItemValidationModel>(),
                 Frequentadores = new List<NarrativaItemValidationModel>(),
@@ -192,7 +192,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                 narrativa.Video = obj.Video;
                 narrativa.CidadeId = obj.CidadeId;
 
-                narrativa.Slug = SlugHelper.GenerateSlug(obj.Descricao).ToString();
+                // narrativa.Slug = SlugHelper.GenerateSlug(obj.Descricao).ToString();
                 if (obj.Imagem != null)
                 {
                     narrativa.Imagem = await FileService
@@ -212,7 +212,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         n.Nome = m.Nome;
                         n.Video = m.Video;
                         n.Descricao = m.Descricao;
-                        n.Slug = SlugHelper.GenerateSlug(m.Nome).ToString();
+                       // n.Slug = SlugHelper.GenerateSlug(m.Nome).ToString();
                         n.Imagem = ((m.Imagem != null) ? await FileService
                                     .UploadFileAsync(m.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
@@ -226,7 +226,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                             Nome = m.Nome,
                             Video = m.Video,
                             Descricao = m.Descricao,
-                            Slug = SlugHelper.GenerateSlug(m.Nome).ToString(),
+                        //    Slug = SlugHelper.GenerateSlug(m.Nome).ToString(),
                             Imagem = ((m.Imagem != null) ? await FileService
                                         .UploadFileAsync(m.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/",
@@ -246,7 +246,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         n.Nome = f.Nome;
                         n.Video = f.Video;
                         n.Descricao = f.Descricao;
-                        n.Slug = SlugHelper.GenerateSlug(f.Nome).ToString();
+                     //   n.Slug = SlugHelper.GenerateSlug(f.Nome).ToString();
                         n.Imagem = ((f.Imagem != null) ? await FileService
                                     .UploadFileAsync(f.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
@@ -260,7 +260,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                             Nome = f.Nome,
                             Video = f.Video,
                             Descricao = f.Descricao,
-                            Slug = SlugHelper.GenerateSlug(f.Nome).ToString(),
+                          //  Slug = SlugHelper.GenerateSlug(f.Nome).ToString(),
                             Imagem = ((f.Imagem != null) ? await FileService
                                         .UploadFileAsync(f.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/",
@@ -280,7 +280,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                         n.Nome = v.Nome;
                         n.Video = v.Video;
                         n.Descricao = v.Descricao;
-                        n.Slug = SlugHelper.GenerateSlug(v.Nome).ToString();
+                       // n.Slug = SlugHelper.GenerateSlug(v.Nome).ToString();
                         n.Imagem = ((v.Imagem != null) ? await FileService
                                     .UploadFileAsync(v.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/",
@@ -294,7 +294,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                             Nome = v.Nome,
                             Video = v.Video,
                             Descricao = v.Descricao,
-                            Slug = SlugHelper.GenerateSlug(v.Nome).ToString(),
+                           // Slug = SlugHelper.GenerateSlug(v.Nome).ToString(),
                             Imagem = ((v.Imagem != null) ? await FileService
                                         .UploadFileAsync(v.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/",

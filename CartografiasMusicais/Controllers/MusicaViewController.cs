@@ -21,6 +21,7 @@ namespace CartografiasMusicais.Controllers
             var model = await Context.Musicas.OrderByDescending(x => x.Id).ToListAsync();
             ViewBag.Imagens = await Context.Musicas.Where(x => string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
             ViewBag.Videos = await Context.Musicas.Where(x => !string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
+            ViewBag.VideoDefault = await Context.Musicas.Where(x => !string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).FirstAsync();
             return View(model);
         }
 
@@ -30,7 +31,7 @@ namespace CartografiasMusicais.Controllers
 
             ViewBag.Imagens = await Context.Musicas.Where(x => string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
             ViewBag.Videos = await Context.Musicas.Where(x => !string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
-
+            
             return View(model);
         }
 
