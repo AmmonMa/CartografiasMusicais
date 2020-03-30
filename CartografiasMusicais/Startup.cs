@@ -107,6 +107,9 @@ namespace CartografiasMusicais
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
 
+                routes.MapRoute("pers_route_0", "admin",
+                    defaults: new { area = "Admin", controller = "Cidade", action = "Index" });
+
                 routes.MapRoute("pers_route_1", "apresenta",
                     defaults: new { controller = "Home", action = "Apresentacao" });
 

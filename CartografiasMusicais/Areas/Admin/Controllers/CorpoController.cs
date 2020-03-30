@@ -17,7 +17,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
 {
     [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     [Area("Admin")]
-    [AllowAnonymous]
+    [Authorize]
     public class CorpoController : Controller
     {
         private CoreContext Context;
