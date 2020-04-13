@@ -63,6 +63,7 @@ namespace CartografiasMusicais.Business.Context
         public DbSet<Musico> Musicos { get; set; }
         public DbSet<Frequentador> Frequentadores { get; set; }
         public DbSet<Voz> Vozes { get; set; }
+        public DbSet<Pagina> Paginas { get; set; }
 
     }
 }

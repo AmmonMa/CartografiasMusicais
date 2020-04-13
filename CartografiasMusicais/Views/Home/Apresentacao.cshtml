@@ -1,4 +1,5 @@
-﻿
+﻿@model CartografiasMusicais.Business.Context.Pagina
+
 @{
     ViewData["Title"] = "Apresentacao";
     Layout = "~/Views/Shared/_ContentLayout.cshtml";
@@ -18,12 +19,7 @@
 
         <div class="col-md-2 lc "></div>
 
-        <div class="col-md-8 equipe">
-            <br>
-            <p>Esta plataforma é um dos resultados da pesquisa interinstitucional intitulada “Cidades Musicais do Estado do Rio de Janeiro”, realizada entre 2017 e 2020 pelos pesquisadores do Núcleo de Estudos e Projetos em Comunicação da Universidade Federal do Rio de Janeiro (vinculado ao PPGCOM da UFRJ) e do Grupo de Pesquisa Comunicação, Arte e Cidade da Universidade do Estado do Rio de Janeiro, com o apoio do CNPq, CAPES e FAPERJ.<p>
-                <br>
-            <p>A partir dos estudos de caso das cidades de Rio das Ostras, Conservatória, Paraty e Rio de Janeiro, busca-se avaliar a importância das atividades musicais realizadas ao vivo e nos espaços públicos e privados por artistas, coletivos e/ou redes sociais para a ressignificação destas urbes do Estado do Rio de Janeiro, isto é, busca-se analisar sua capacidade em converter estes territórios em espaços mais democráticos e com dinâmicas mais interculturais. Parte-se do pressuposto de que há uma “cultura musical” nestas localidades, praticada por diversos atores e que é capaz de criar condições não só para a ampliação da sociabilidade, mas também para a ressignificação criativa dos espaços dessas cidades. Evidentemente, estas urbes possuem também um número consistente de atividades musicais que são programadas para serem realizadas em espaços privados e essas têm uma função importante na construção de um imaginário urbano e “territorialidades” e sociabilidades que gravitam em torno da música. A hipótese central deste projeto é a de que existiriam “cidades musicais” pelo Brasil e pelo mundo (evidentemente, que com suas respectivas e relevantes singularidades), tais como as quatro cidades que serão pesquisadas no âmbito deste projeto. Um pouco distinto da noção de cidades musicais (como modalidade de “cidade criativa”), tal como foi formulada pela UNESCO, emprega-se este conceito para designar localidades que possuem “territorialidades sônico-musicais” significativas que pela ação do tempo promovem expressivas modificações no imaginário e cotidiano urbano. Ou seja, essas “territorialidades” – pela recorrência da sua presença, intensidade dos afetos, enorme mobilização, pluralidade e pela sua multiplicação em diversas áreas – acabam produzindo efeitos significativos em partes da localidade ou na urbe como um todo.<p>
-        </div>
+        @Html.Raw(Model.Descricao)
 
         <div class="col-md-2 ld">
 

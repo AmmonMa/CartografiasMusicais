@@ -1,0 +1,98 @@
+﻿@model IEnumerable<CartografiasMusicais.Business.Context.Pagina>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page page-tables-datatables">
+    <div class="pageheader">
+        <h2>Listar <span> Outras Paginas</span></h2>
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <span><i class="fa fa-home"></i> Administração</span>
+                </li>
+                <li>
+                    <span>Outras Paginas</span>
+                </li>
+                <li>
+                    <span>Listar Todos</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- tile -->
+            <section class="tile">
+                <!-- tile header -->
+                <div class="tile-header dvd dvd-btm">
+                    <h1 class="custom-font"><strong>Listar</strong> Outras Paginas</h1>
+                </div>
+                <!-- /tile header -->
+                <!-- tile body -->
+                <div class="tile-body">
+                    <div class="table-responsive">
+                        <table class="table table-custom" id="editable">
+                            <thead>
+                                <tr>
+                                    <th>Paginas</th>
+                                    <th style="width: 160px;" class="no-sort">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="odd">
+                                        <td>@Html.DisplayFor(modeItem => item.Nome)</td>
+                                        <td class="actions">
+                                            @Html.ActionLink("Editar", "Edit", new { nome = item.Nome }, new { @class = "edit text-primary text-uppercase text-strong text-sm mr-10" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /tile body -->
+            </section>
+            <!-- /tile -->
+        </div>
+    </div>
+</div>
+@section PageScripts {
+    <script>
+        $(window).load(function () {
+
+            var table = $('#editable');
+
+            var oTable = $('#editable').DataTable({
+                "aaSorting": [],
+                "aoColumnDefs": [
+                    { 'bSortable': false, 'aTargets': [0,1] }
+                ],
+                "oLanguage": {
+                    "sProcessing": "Processando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "Não foram encontrados resultados",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
+                    "sInfoFiltered": "",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "oPaginate": {
+                        "sFirst": "Primeiro",
+                        "sPrevious": "Anterior",
+                        "sNext": "Seguinte",
+                        "sLast": "Último"
+                    }
+                }
+            });
+
+
+
+        });
+    </script>
+}

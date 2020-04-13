@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CartografiasMusicais.Models;
+using CartografiasMusicais.Business.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CartografiasMusicais.Controllers
 {
     public class HomeController : Controller
     {
+        private CoreContext Context;
 
-        public HomeController()
+        public HomeController(CoreContext context)
         {
+            Context = context;
         }
 
         public IActionResult Index()
@@ -23,16 +27,19 @@ namespace CartografiasMusicais.Controllers
 
         public IActionResult Apresentacao()
         {
-            return View();
+            var model = Context.Paginas.FirstOrDefault(x => x.Nome.Equals("Apresentacao"));
+            return View(model);
         }
 
         public IActionResult Equipe()
         {
-            return View();
+            var model = Context.Paginas.FirstOrDefault(x => x.Nome.Equals("Equipe"));
+            return View(model);
         }
         public IActionResult Contato()
         {
-            return View();
+            var model = Context.Paginas.FirstOrDefault(x => x.Nome.Equals("Contato"));
+            return View(model);
         }
 
     }

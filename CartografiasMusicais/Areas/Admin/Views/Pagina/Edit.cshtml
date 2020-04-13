@@ -1,0 +1,83 @@
+﻿@model CartografiasMusicais.CrossCutting.ValidationModels.Pagina.MudaPaginaDTO
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page page-forms-common">
+    <div class="pageheader">
+        <h2>Outras Paginas <span>Editar Info da Pagina @Model.Nome</span></h2>
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <span><i class="fa fa-home"></i> Administração</span>
+                </li>
+                <li>
+                    <span>Outras Paginas</span>
+                </li>
+                <li>
+                    <span>Editar Info</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- tile -->
+            <section class="tile">
+                <!-- tile header -->
+                <div class="tile-header dvd dvd-btm">
+                    <h1 class="custom-font"><strong>Editar </strong>Info para a pagina @Model.Nome</h1>
+                </div>
+                <!-- /tile header -->
+                <!-- tile body -->
+                <div class="tile-body">
+                    <form enctype="multipart/form-data" asp-action="Edit" class="form-horizontal">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.Nome)
+                        <div class="form-group">
+                            <label asp-for="Descricao" class="col-sm-2 control-label"></label>
+                            <div class="col-sm-10">
+                                <textarea asp-for="Descricao" class="form-control summernote"></textarea>
+                                <span asp-validation-for="Descricao" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-footer">
+                            <input type="submit" value="Salvar" class="btn btn-success btn-ef btn-ef-4 btn-ef-4c pull-right" />
+                            <button asp-action="Index" class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c"><i class="fa fa-arrow-left"></i>Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /tile body -->
+            </section>
+            <!-- /tile -->
+        </div>
+    </div>
+</div>
+
+@section PageScripts {
+    <script>
+        $(window).load(function () {
+            $('textarea.summernote').summernote({
+                focus: true,
+                lang: 'pt-BR',
+                dialogsInBody: false,
+                height: 450,
+                fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '24', '36'],
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['picture', 'link', 'hr']],
+                    ['misc', ['undo', 'redo', 'codeview']]
+                ]
+            });
+            $('textarea.summernote').summernote('fontSize', 16);
+        })
+    </script>
+}
