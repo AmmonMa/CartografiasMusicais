@@ -23,10 +23,6 @@
     <ProjectReference Include="..\CartografiasMusicais.CrossCutting.ValidationModels\CartografiasMusicais.CrossCutting.ValidationModels.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\imagens\" />
-  </ItemGroup>
-
 
 
 </Project>

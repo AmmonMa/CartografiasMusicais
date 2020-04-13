@@ -14,9 +14,8 @@
                     <span class="glyphicon glyphicon-play seta"> </span> <p>Espaços </p>
                 </div>
                 <div class="txt areatxt">
-                    <p>
-                        @Model.Descricao
-                    </p>
+                    <p>O Estado do Rio de Janeiro é um importante “celeiro” da produção musical (e cultural) do país. As cidades de Paraty, Rio de Janeiro, Conservatória e Rio das Ostras tem se destacado nessa macrorregião não só pelas iniciativas mais institucionalizadas – organizadas na forma de grandes eventos articulados em geral às cadeias produtivas do turismo e entretenimento –, mas também pelas ações de redes e coletivos artísticos configuradas de maneira mais espontânea e no formato de rodas e pequenas festas que ocupam os espaços público.</p>
+
                 </div>
             </div>
             <!-- Cenario -->
@@ -38,13 +37,32 @@
         <!-- Miniaturas -->
         <div class="row miniaturas">
             <div class="col-md-12">
+                <div><p>Imagens</p></div>
                 <div class="regular slider">
-                    @foreach (var e in ViewBag.Espacos)
+                    @foreach (var e in ViewBag.Imagens)
                     {
 
                         <div>
                             <a href="/espacos/@e.Slug">
                                 <img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, e.Imagem)"
+                                     alt="@e.Nome" data-pagespeed-url-hash="425040009"
+                                     onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="row miniaturas">
+            <div class="col-md-12">
+                <div><p>Videos</p></div>
+                <div class="regular slider">
+                    @foreach (var e in ViewBag.Videos)
+                    {
+                        <div>
+                            <a href="#" onclick="callView('@e.Video'); return false;">
+                                <img src="https://img.youtube.com/vi/@e.Video/0.jpg"
                                      alt="@e.Nome" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                             </a>

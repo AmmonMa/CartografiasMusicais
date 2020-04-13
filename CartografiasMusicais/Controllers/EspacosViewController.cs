@@ -21,7 +21,7 @@ namespace CartografiasMusicais.Controllers
             var model = await Context.Espacos.OrderByDescending(x => x.Id).ToListAsync();
             ViewBag.Imagens = await Context.Espacos.Where(x => string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
             ViewBag.Videos = await Context.Espacos.Where(x => !string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
-
+            ViewBag.ImagemDefault = await Context.Espacos.Where(x => string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).FirstAsync();
             return View(model);
         }
 
@@ -30,6 +30,7 @@ namespace CartografiasMusicais.Controllers
             var model = await Context.Espacos.FirstOrDefaultAsync(x => x.Slug == slug);
             ViewBag.Imagens = await Context.Espacos.Where(x => string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
             ViewBag.Videos = await Context.Espacos.Where(x => !string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
+            ViewBag.ImagemDefault = await Context.Espacos.Where(x => string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).FirstAsync();
 
             return View(model);
         }

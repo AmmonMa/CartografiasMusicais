@@ -7,11 +7,14 @@
         <div class="icons-cidade">
             @foreach(var c in cidades)
             {
-                <span class="mini-local">
-                    <p>@c.Nome</p>
-                    <a href="/cidades/@c.Slug"><div class="cidade-ico">
-                        <img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, c.Imagem)" style="width:160px;" data-pagespeed-url-hash="1989443410" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" /></div></a>
-                </span>
+            <span class="mini-local">
+                <a href="/cidades/@c.Slug">
+                    <div class="cidade-ico">
+                        <img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, c.Imagem)" style="width:160px;" data-pagespeed-url-hash="1989443410" onload="pagespeed.CriticalImages.checkImageForCriticality(this);" />
+                    </div>
+                </a>
+                <p>@c.Nome</p>
+            </span>
 
             }
         </div>
