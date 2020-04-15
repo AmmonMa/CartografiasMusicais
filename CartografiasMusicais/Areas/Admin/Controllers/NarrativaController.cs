@@ -205,19 +205,27 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                 var musicos = obj.Musicos ?? new List<NarrativaItemValidationModel>();
                 foreach (var m in musicos)
                 {
+                    
                     var n = narrativa.Musicos.Where(x => x.Id == m.Id).SingleOrDefault();
                     if(n != null)
                     {
-                        narrativa.Musicos.Remove(n);
-                        n.Nome = m.Nome;
-                        n.Video = m.Video;
-                        n.Descricao = m.Descricao;
-                       // n.Slug = SlugHelper.GenerateSlug(m.Nome).ToString();
-                        n.Imagem = ((m.Imagem != null) ? await FileService
-                                    .UploadFileAsync(m.Imagem,
-                                                    HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(m.Imagem.FileName)}") : n.Imagem);
-                        narrativa.Musicos.Add(n);
+                        if(m.Video != null)
+                        {
+                            narrativa.Musicos.Remove(n);
+                            n.Nome = m.Nome;
+                            n.Video = m.Video;
+                            n.Descricao = m.Descricao;
+                           // n.Slug = SlugHelper.GenerateSlug(m.Nome).ToString();
+                            n.Imagem = ((m.Imagem != null) ? await FileService
+                                        .UploadFileAsync(m.Imagem,
+                                                        HostingEnvironment.WebRootPath + "/imagens/",
+                                                        $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(m.Imagem.FileName)}") : n.Imagem);
+                            narrativa.Musicos.Add(n);
+                        }
+                        else
+                        {
+                            Context.Musicos.Remove(n);
+                        }
                     }
                     else
                     {
@@ -242,16 +250,23 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     var n = narrativa.Frequentadores.Where(x => x.Id == f.Id).SingleOrDefault();
                     if (n != null)
                     {
-                        narrativa.Frequentadores.Remove(n);
-                        n.Nome = f.Nome;
-                        n.Video = f.Video;
-                        n.Descricao = f.Descricao;
-                     //   n.Slug = SlugHelper.GenerateSlug(f.Nome).ToString();
-                        n.Imagem = ((f.Imagem != null) ? await FileService
-                                    .UploadFileAsync(f.Imagem,
-                                                    HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(f.Imagem.FileName)}") : n.Imagem);
-                        narrativa.Frequentadores.Add(n);
+                        if(f.Video != null)
+                        {
+                            narrativa.Frequentadores.Remove(n);
+                            n.Nome = f.Nome;
+                            n.Video = f.Video;
+                            n.Descricao = f.Descricao;
+                         //   n.Slug = SlugHelper.GenerateSlug(f.Nome).ToString();
+                            n.Imagem = ((f.Imagem != null) ? await FileService
+                                        .UploadFileAsync(f.Imagem,
+                                                        HostingEnvironment.WebRootPath + "/imagens/",
+                                                        $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(f.Imagem.FileName)}") : n.Imagem);
+                            narrativa.Frequentadores.Add(n);
+                        }
+                        else
+                        {
+                            Context.Frequentadores.Remove(n);
+                        }
                     }
                     else
                     {
@@ -276,16 +291,23 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     var n = narrativa.Vozes.Where(x => x.Id == v.Id).SingleOrDefault();
                     if (n != null)
                     {
-                        narrativa.Vozes.Remove(n);
-                        n.Nome = v.Nome;
-                        n.Video = v.Video;
-                        n.Descricao = v.Descricao;
-                       // n.Slug = SlugHelper.GenerateSlug(v.Nome).ToString();
-                        n.Imagem = ((v.Imagem != null) ? await FileService
-                                    .UploadFileAsync(v.Imagem,
-                                                    HostingEnvironment.WebRootPath + "/imagens/",
-                                                    $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : n.Imagem);
-                        narrativa.Vozes.Add(n);
+                        if(v.Video != null)
+                        {
+                            narrativa.Vozes.Remove(n);
+                            n.Nome = v.Nome;
+                            n.Video = v.Video;
+                            n.Descricao = v.Descricao;
+                           // n.Slug = SlugHelper.GenerateSlug(v.Nome).ToString();
+                            n.Imagem = ((v.Imagem != null) ? await FileService
+                                        .UploadFileAsync(v.Imagem,
+                                                        HostingEnvironment.WebRootPath + "/imagens/",
+                                                        $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : n.Imagem);
+                            narrativa.Vozes.Add(n);
+                        }
+                        else
+                        {
+                            Context.Vozes.Remove(n);
+                        }
                     }
                     else
                     {

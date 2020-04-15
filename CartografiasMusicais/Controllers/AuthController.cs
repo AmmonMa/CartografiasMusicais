@@ -45,7 +45,7 @@ namespace CartografiasMusicais.Controllers
                 var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, false, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "User", new { area = "Admin" });
+                    return RedirectToAction("Index", "Cidade", new { area = "Admin" });
                 }
             }
             ModelState.AddModelError(string.Empty, "Falha na tentativa de login");

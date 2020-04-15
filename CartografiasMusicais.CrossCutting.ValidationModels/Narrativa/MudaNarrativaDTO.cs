@@ -16,7 +16,6 @@ namespace CartografiasMusicais.CrossCutting.ValidationModels.Narrativa
         [Display(Name = "Codigo do Video")]
         public string Video { get; set; }
         [Display(Name = "Cidade")]
-        [Required(ErrorMessage = "Cidade é obrigatório")]
         public int? CidadeId { get; set; }
         public string Slug { get; set; }
         [Display(Name = "Imagem")]
