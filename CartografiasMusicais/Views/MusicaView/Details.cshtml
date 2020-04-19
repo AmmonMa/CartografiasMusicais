@@ -54,7 +54,7 @@
                     {
 
                         <div>
-                            <a href="/espacos/@e.Slug">
+                            <a href="/musicas/@e.Slug">
                                 <img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, e.Imagem)"
                                      alt="@e.Nome" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
@@ -72,7 +72,7 @@
                     @foreach (var e in ViewBag.Videos)
                     {
                         <div>
-                            <a href="#" onclick="callView('@e.Video'); return false;">
+                            <a href="#" onclick="callVideo('@e.Video'); return false;">
                                 <img src="https://img.youtube.com/vi/@e.Video/0.jpg"
                                      alt="@e.Nome" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
@@ -90,7 +90,7 @@
 
 @section PageScripts {
     <script>
-        function callView(link) {
+        function callVideo(link) {
             $.get('@Url.Action("Video", "MusicaView")', { link: link }, function (res) {
                 $("#cenario_alvo").html(res);
             });

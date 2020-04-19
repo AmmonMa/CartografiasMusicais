@@ -1,0 +1,8 @@
+﻿
+@{
+    ViewData["Title"] = "Image";
+    Layout = "~/Views/Shared/_VideoLayout.cshtml";
+}
+
+
+<img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, ViewBag.Imagem)" class="img-responsive" />

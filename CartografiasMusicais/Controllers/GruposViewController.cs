@@ -42,5 +42,13 @@ namespace CartografiasMusicais.Controllers
             ViewBag.Link = link;
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Image(string imagem)
+        {
+            ViewBag.Imagem = imagem;
+            return View();
+        }
+
     }
 }

@@ -61,7 +61,7 @@
                     @foreach (var e in ViewBag.Videos)
                     {
                         <div>
-                            <a href="#" onclick="callView('@e.Video'); return false;">
+                            <a href="#" onclick="callVideo('@e.Video'); return false;">
                                 <img src="https://img.youtube.com/vi/@e.Video/0.jpg"
                                      alt="@e.Nome" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">

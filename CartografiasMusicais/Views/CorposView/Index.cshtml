@@ -24,15 +24,17 @@
 
 
                 <div class="cenario">
-                    @if (ViewBag.Videos.Count > 0)
-                    {
-                        <div class="videocena">
-                            <iframe height="350" width="640" src="https://www.youtube-nocookie.com/embed/@ViewBag.VideoDefault.Video"
-                                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen="">
-                            </iframe>
-                        </div>
-                    }
+                    <center id="cenario_alvo">
+                        @if (ViewBag.Videos.Count > 0)
+                        {
+                            <div class="videocena">
+                                <iframe height="350" width="640" src="https://www.youtube-nocookie.com/embed/@ViewBag.VideoDefault.Video"
+                                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen="">
+                                </iframe>
+                            </div>
+                        }
+                    </center>
                 </div>
 
             </div>
@@ -47,10 +49,9 @@
                     {
 
                         <div>
-                            <a href="/corpos/@e.Slug">
+                            <a href="/corpos/@e.Slug" onclick="callImage('@e.Imagem'); return false;">
                                 <img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, e.Imagem)"
-                                     alt="@e.Nome" data-pagespeed-url-hash="425040009"
-                                     onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                                     alt="@e.Nome">
                             </a>
                         </div>
                     }
@@ -64,10 +65,9 @@
                     @foreach (var e in ViewBag.Videos)
                     {
                         <div>
-                            <a href="#" onclick="callView('@e.Video'); return false;">
+                            <a href="#" onclick="callVideo('@e.Video'); return false;">
                                 <img src="https://img.youtube.com/vi/@e.Video/0.jpg"
-                                     alt="@e.Nome" data-pagespeed-url-hash="425040009"
-                                     onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                                     alt="@e.Nome">
                             </a>
                         </div>
                     }
@@ -80,9 +80,17 @@
 </div>
 @section PageScripts {
     <script>
-        function callView(link) {
+        function callVideo(link) {
             $.get('@Url.Action("Video", "CorposView")', { link: link }, function (res) {
                 $("#cenario_alvo").html(res);
+                window.scrollTo(0, 0);
+            });
+        }
+
+        function callImage(imagem) {
+            $.get('@Url.Action("Image", "CorposView")', { imagem: imagem }, function (res) {
+                $("#cenario_alvo").html(res);
+                window.scrollTo(0, 0);
             });
         }
     </script>
