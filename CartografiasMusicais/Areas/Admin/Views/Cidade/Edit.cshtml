@@ -58,7 +58,7 @@
                                 @if (!string.IsNullOrEmpty(Model.CaminhoImagem))
                                 {
                                     <div class="col-sm-2">
-                                        <a href="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, Model.CaminhoImagem)" target="_blank" class="btn btn-default btn-ef btn-ef-7 btn-ef-7a mb-10"><i class="fa fa-file-archive-o"></i>Visualizar Foto</a>
+                                        <a href="@String.Format("https://{0}/imagens/content/{1}", Context.Request.Host, Model.CaminhoImagem)" target="_blank" class="btn btn-default btn-ef btn-ef-7 btn-ef-7a mb-10"><i class="fa fa-file-archive-o"></i>Visualizar Foto</a>
                                     </div>
                                 }
                             </div>

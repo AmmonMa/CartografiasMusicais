@@ -28,7 +28,7 @@ namespace CartografiasMusicais
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CoreContext>(options => options.UseLazyLoadingProxies().UseMySql(Configuration.GetConnectionString("HostingerCS")));
+            services.AddDbContext<CoreContext>(options => options.UseLazyLoadingProxies().UseMySql(Configuration.GetConnectionString("KingHostCS")));
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<CoreContext>()

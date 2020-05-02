@@ -66,7 +66,7 @@
                                         <td>@Html.DisplayFor(modelItem => item.Nome)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Descricao)</td>
                                         <td>
-                                            <img src="@String.Format("https://{0}/imagens/{1}", Context.Request.Host, item.Imagem)" class='img-thumbnail img-circle size-100x100 img-responsive'>
+                                            <img src="@String.Format("https://{0}/imagens/content/{1}", Context.Request.Host, item.Imagem)" class='img-thumbnail img-circle size-100x100 img-responsive'>
                                         </td>
                                         <td class="actions">
                                             @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "edit text-primary text-uppercase text-strong text-sm mr-10" })

@@ -58,7 +58,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     Slug = SlugHelper.GenerateSlug(obj.Descricao).ToString(),
                     Imagem = ((obj.Imagem != null) ? await FileService
                                     .UploadFileAsync(obj.Imagem,
-                                                    HostingEnvironment.WebRootPath + "/imagens/",
+                                                    HostingEnvironment.WebRootPath + "/imagens/content/",
                                                     $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}") : null)
                 });
                 await Context.SaveChangesAsync();
@@ -102,7 +102,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                 {
                     musica.Imagem = await FileService
                                         .UploadFileAsync(obj.Imagem,
-                                                        HostingEnvironment.WebRootPath + "/imagens/",
+                                                        HostingEnvironment.WebRootPath + "/imagens/content/",
                                                         $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
                 }
                 await Context.SaveChangesAsync();
