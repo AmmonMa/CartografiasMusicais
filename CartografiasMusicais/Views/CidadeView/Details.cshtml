@@ -52,7 +52,7 @@
                         @if (string.IsNullOrEmpty(e.Video))
                         {
                             <a href="/@Model.Slug/musicas/@e.Slug" onclick="callImage('@e.Imagem'); return false;">
-                                <img src="@String.Format("https://{0}/imagens/content/{1}", Context.Request.Host, e.Imagem)"
+                                <img src="@String.Format("https://{0}/imagens/content/thumbs/{1}", Context.Request.Host, e.Imagem)"
                                      alt="@e.Descricao" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                             </a>
@@ -62,7 +62,7 @@
                         {
                             <a href="#" onclick="callVideo('@e.Video'); return false;">
 
-                                <img src="https://img.youtube.com/vi/@e.Video/0.jpg"
+                                <img src="https://img.youtube.com/vi/@e.Video/1.jpg"
                                      alt="@e.Descricao" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                             </a>
@@ -84,7 +84,7 @@
                         @if (string.IsNullOrEmpty(e.Video))
                         {
                             <a href="/@Model.Slug/narrativas/@e.Slug" onclick="callImage('@e.Imagem'); return false;">
-                                <img src="@String.Format("https://{0}/imagens/content/{1}", Context.Request.Host, e.Imagem)"
+                                <img src="@String.Format("https://{0}/imagens/content/thumbs/{1}", Context.Request.Host, e.Imagem)"
                                      alt="@e.Descricao" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                             </a>
@@ -93,7 +93,7 @@
                         {
                             <a href="#" onclick="callVideo('@e.Video'); return false;">
 
-                                <img src="https://img.youtube.com/vi/@e.Video/0.jpg"
+                                <img src="https://img.youtube.com/vi/@e.Video/1.jpg"
                                      alt="@e.Descricao" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                             </a>
@@ -115,7 +115,7 @@
                         {
 
                             <a href="/@Model.Slug/corpos/@e.Slug" onclick="callImage('@e.Imagem'); return false;">
-                                <img src="@String.Format("https://{0}/imagens/content/{1}", Context.Request.Host, e.Imagem)"
+                                <img src="@String.Format("https://{0}/imagens/content/thumbs/{1}", Context.Request.Host, e.Imagem)"
                                      alt="@e.Nome" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                             </a>
@@ -124,7 +124,7 @@
                         {
                             <a href="#" onclick="callVideo('@e.Video'); return false;">
 
-                                <img src="https://img.youtube.com/vi/@e.Video/0.jpg"
+                                <img src="https://img.youtube.com/vi/@e.Video/1.jpg"
                                      alt="@e.Nome" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                             </a>

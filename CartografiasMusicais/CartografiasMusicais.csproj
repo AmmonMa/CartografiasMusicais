@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="BeginCollectionItemCore" Version="1.0.8" />
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="7.20.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
@@ -21,6 +22,10 @@
     <ProjectReference Include="..\CartografiasMusicais.Business.Context.Services\CartografiasMusicais.Business.Services.csproj" />
     <ProjectReference Include="..\CartografiasMusicais.Business.Context\CartografiasMusicais.Business.Context.csproj" />
     <ProjectReference Include="..\CartografiasMusicais.CrossCutting.ValidationModels\CartografiasMusicais.CrossCutting.ValidationModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\imagens\content\thumbs\" />
   </ItemGroup>
 
 

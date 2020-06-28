@@ -44,7 +44,7 @@
 
                         <div>
                             <a href="/espacos/@e.Slug" onclick="callImage('@e.Imagem'); return false;">
-                                <img src="@String.Format("https://{0}/imagens/content/{1}", Context.Request.Host, e.Imagem)"
+                                <img src="@String.Format("https://{0}/imagens/content/thumbs/{1}", Context.Request.Host, e.Imagem)"
                                      alt="@e.Nome" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                             </a>
@@ -62,7 +62,7 @@
                     {
                         <div>
                             <a href="#" onclick="callVideo('@e.Video'); return false;">
-                                <img src="https://img.youtube.com/vi/@e.Video/0.jpg"
+                                <img src="https://img.youtube.com/vi/@e.Video/1.jpg"
                                      alt="@e.Nome" data-pagespeed-url-hash="425040009"
                                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                             </a>

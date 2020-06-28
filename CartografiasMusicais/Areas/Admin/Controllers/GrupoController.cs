@@ -1,6 +1,7 @@
 ﻿using CartografiasMusicais.Business.Context;
 using CartografiasMusicais.CrossCutting.Utils;
 using CartografiasMusicais.CrossCutting.ValidationModels.Grupo;
+using ImageMagick;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -48,8 +49,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                await Context.Grupos.AddAsync(new Grupo
+                var grupo = new Grupo
                 {
                     Nome = obj.Nome,
                     Descricao = obj.Descricao,
@@ -60,7 +60,20 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                                     .UploadFileAsync(obj.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/content/",
                                                     $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}") : null)
-                });
+                };
+                if (grupo.Imagem != null)
+                {
+                    using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + grupo.Imagem))
+                    {
+                        var size = new MagickGeometry(150, 90);
+                        size.IgnoreAspectRatio = false;
+                        image.Quality = 100;
+                        image.Resize(size);
+                        image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + grupo.Imagem);
+                    }
+
+                }
+                await Context.Grupos.AddAsync(grupo);
                 await Context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -105,6 +118,15 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                                         .UploadFileAsync(obj.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/content/",
                                                         $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
+
+                    using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + grupo.Imagem))
+                    {
+                        var size = new MagickGeometry(150, 90);
+                        size.IgnoreAspectRatio = false;
+                        image.Quality = 100;
+                        image.Resize(size);
+                        image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + grupo.Imagem);
+                    }
                 }
 
                 await Context.SaveChangesAsync();

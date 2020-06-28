@@ -1,6 +1,7 @@
 ﻿using CartografiasMusicais.Business.Context;
 using CartografiasMusicais.CrossCutting.Utils;
 using CartografiasMusicais.CrossCutting.ValidationModels.Narrativa;
+using ImageMagick;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +34,8 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var model = await Context.Narrativas.OrderByDescending(x => x.Id).ToListAsync();
+
+
             return View(model);
         }
 
@@ -66,23 +69,37 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                 var musicos = obj.Musicos ?? new List<NarrativaItemValidationModel>();
                 foreach (var m in musicos)
                 {
-                    model.Musicos.Add(new Musico
+                    var musico = new Musico
                     {
                         Nome = m.Nome,
                         Video = m.Video,
                         Descricao = m.Descricao,
-                       // Slug = SlugHelper.GenerateSlug(m.Nome).ToString(),
+                        // Slug = SlugHelper.GenerateSlug(m.Nome).ToString(),
                         Imagem = ((m.Imagem != null) ? await FileService
                                     .UploadFileAsync(m.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/content/",
                                                     $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(m.Imagem.FileName)}") : null)
-                    });
+                    };
+
+                    if(musico.Imagem != null)
+                    {
+                        using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + musico.Imagem))
+                        {
+                            var size = new MagickGeometry(150, 90);
+                            size.IgnoreAspectRatio = false;
+                            image.Quality = 100;
+                            image.Resize(size);
+                            image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + musico.Imagem);
+                        }
+                    }
+
+                    model.Musicos.Add(musico);
                 }
 
                 var frequentadores = obj.Frequentadores ?? new List<NarrativaItemValidationModel>();
                 foreach (var f in frequentadores)
                 {
-                    model.Frequentadores.Add(new Frequentador
+                    var frequentador = new Frequentador
                     {
                         Nome = f.Nome,
                         Video = f.Video,
@@ -92,23 +109,51 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                                     .UploadFileAsync(f.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/content/",
                                                     $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(f.Imagem.FileName)}") : null)
-                    });
+                    };
+
+                    if(frequentador.Imagem != null)
+                    {
+                        using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + frequentador.Imagem))
+                        {
+                            var size = new MagickGeometry(150, 90);
+                            size.IgnoreAspectRatio = false;
+                            image.Quality = 100;
+                            image.Resize(size);
+                            image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + frequentador.Imagem);
+                        }
+                    }
+
+                    model.Frequentadores.Add(frequentador);
                 }
 
                 var vozes = obj.Vozes ?? new List<NarrativaItemValidationModel>();
                 foreach (var v in vozes)
                 {
-                    model.Vozes.Add(new Voz
+                    var voz = new Voz
                     {
                         Nome = v.Nome,
                         Video = v.Video,
                         Descricao = v.Descricao,
-                       // Slug = SlugHelper.GenerateSlug(v.Nome).ToString(),
+                        // Slug = SlugHelper.GenerateSlug(v.Nome).ToString(),
                         Imagem = ((v.Imagem != null) ? await FileService
                                     .UploadFileAsync(v.Imagem,
                                                     HostingEnvironment.WebRootPath + "/imagens/content/",
                                                     $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : null)
-                    });
+                    };
+
+                    if(voz.Imagem != null)
+                    {
+                        using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + voz.Imagem))
+                        {
+                            var size = new MagickGeometry(150, 90);
+                            size.IgnoreAspectRatio = false;
+                            image.Quality = 100;
+                            image.Resize(size);
+                            image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + voz.Imagem);
+                        }
+                    }
+
+                    model.Vozes.Add(voz);
                 }
 
                 await Context.Narrativas.AddAsync(model);
@@ -199,6 +244,15 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                                         .UploadFileAsync(obj.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/content/",
                                                         $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(obj.Imagem.FileName)}");
+
+                    using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + narrativa.Imagem))
+                    {
+                        var size = new MagickGeometry(150, 90);
+                        size.IgnoreAspectRatio = false;
+                        image.Quality = 100;
+                        image.Resize(size);
+                        image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + narrativa.Imagem);
+                    }
                 }
 
                 narrativa.Musicos = new List<Musico>();
@@ -220,6 +274,19 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                                         .UploadFileAsync(m.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/content/",
                                                         $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(m.Imagem.FileName)}") : n.Imagem);
+
+                            if (n.Imagem != null)
+                            {
+                                using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + n.Imagem))
+                                {
+                                    var size = new MagickGeometry(150, 90);
+                                    size.IgnoreAspectRatio = false;
+                                    image.Quality = 100;
+                                    image.Resize(size);
+                                    image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + n.Imagem);
+                                }
+                            }
+
                             narrativa.Musicos.Add(n);
                         }
                         else
@@ -229,17 +296,31 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     }
                     else
                     {
-                        narrativa.Musicos.Add(new Musico
+                        var musico = new Musico
                         {
                             Nome = m.Nome,
                             Video = m.Video,
                             Descricao = m.Descricao,
-                        //    Slug = SlugHelper.GenerateSlug(m.Nome).ToString(),
+                            //    Slug = SlugHelper.GenerateSlug(m.Nome).ToString(),
                             Imagem = ((m.Imagem != null) ? await FileService
                                         .UploadFileAsync(m.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/content/",
                                                         $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(m.Imagem.FileName)}") : null)
-                        });
+                        };
+
+                        if (musico.Imagem != null)
+                        {
+                            using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + musico.Imagem))
+                            {
+                                var size = new MagickGeometry(150, 90);
+                                size.IgnoreAspectRatio = false;
+                                image.Quality = 100;
+                                image.Resize(size);
+                                image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + musico.Imagem);
+                            }
+                        }
+
+                        narrativa.Musicos.Add(musico);
                     }
                 }
 
@@ -261,6 +342,18 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                                         .UploadFileAsync(f.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/content/",
                                                         $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(f.Imagem.FileName)}") : n.Imagem);
+                            if (n.Imagem != null)
+                            {
+                                using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + n.Imagem))
+                                {
+                                    var size = new MagickGeometry(150, 90);
+                                    size.IgnoreAspectRatio = false;
+                                    image.Quality = 100;
+                                    image.Resize(size);
+                                    image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + n.Imagem);
+                                }
+                            }
+
                             narrativa.Frequentadores.Add(n);
                         }
                         else
@@ -270,17 +363,29 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     }
                     else
                     {
-                        narrativa.Frequentadores.Add(new Frequentador
+                        var frequentador = new Frequentador
                         {
                             Nome = f.Nome,
                             Video = f.Video,
                             Descricao = f.Descricao,
-                          //  Slug = SlugHelper.GenerateSlug(f.Nome).ToString(),
+                            //  Slug = SlugHelper.GenerateSlug(f.Nome).ToString(),
                             Imagem = ((f.Imagem != null) ? await FileService
                                         .UploadFileAsync(f.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/content/",
                                                         $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(f.Imagem.FileName)}") : null)
-                        });
+                        };
+                        if (frequentador.Imagem != null)
+                        {
+                            using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + frequentador.Imagem))
+                            {
+                                var size = new MagickGeometry(150, 90);
+                                size.IgnoreAspectRatio = false;
+                                image.Quality = 100;
+                                image.Resize(size);
+                                image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + frequentador.Imagem);
+                            }
+                        }
+                        narrativa.Frequentadores.Add(frequentador);
                     }
                 }
 
@@ -302,6 +407,18 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                                         .UploadFileAsync(v.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/content/",
                                                         $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : n.Imagem);
+                            if (n.Imagem != null)
+                            {
+                                using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + n.Imagem))
+                                {
+                                    var size = new MagickGeometry(150, 90);
+                                    size.IgnoreAspectRatio = false;
+                                    image.Quality = 100;
+                                    image.Resize(size);
+                                    image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + n.Imagem);
+                                }
+                            }
+
                             narrativa.Vozes.Add(n);
                         }
                         else
@@ -311,17 +428,31 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                     }
                     else
                     {
-                        narrativa.Vozes.Add(new Voz
+                        var voz = new Voz
                         {
                             Nome = v.Nome,
                             Video = v.Video,
                             Descricao = v.Descricao,
-                           // Slug = SlugHelper.GenerateSlug(v.Nome).ToString(),
+                            // Slug = SlugHelper.GenerateSlug(v.Nome).ToString(),
                             Imagem = ((v.Imagem != null) ? await FileService
                                         .UploadFileAsync(v.Imagem,
                                                         HostingEnvironment.WebRootPath + "/imagens/content/",
                                                         $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : null)
-                        });
+                        };
+
+                        if (n.Imagem != null)
+                        {
+                            using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + n.Imagem))
+                            {
+                                var size = new MagickGeometry(150, 90);
+                                size.IgnoreAspectRatio = false;
+                                image.Quality = 100;
+                                image.Resize(size);
+                                image.Write(HostingEnvironment.WebRootPath + "/imagens/content/thumbs/" + n.Imagem);
+                            }
+                        }
+
+                        narrativa.Vozes.Add(voz);
                     }
                 }
                 await Context.SaveChangesAsync();
