@@ -26,12 +26,38 @@
                 <div class="cenario">
                     <center id="cenario_alvo">
                         <div class="videocena">
-                            @if(Model.Musicas.FirstOrDefault() != null)
+                            @if (Model.Musicas.FirstOrDefault() != null && !string.IsNullOrEmpty(Model.Musicas.FirstOrDefault().Video))
                             {
                                 <iframe height="350" width="640" src="https://www.youtube-nocookie.com/embed/@Model.Musicas.FirstOrDefault().Video"
                                         frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                         allowfullscreen="">
                                 </iframe>
+                            }
+                            else if (Model.Narrativas.FirstOrDefault() != null && !string.IsNullOrEmpty(Model.Narrativas.FirstOrDefault().Video))
+                            {
+                                <iframe height="350" width="640" src="https://www.youtube-nocookie.com/embed/@Model.Narrativas.FirstOrDefault().Video"
+                                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen="">
+                                </iframe>
+                            }
+                            else if (Model.Corpos.FirstOrDefault() != null && !string.IsNullOrEmpty(Model.Corpos.FirstOrDefault().Video))
+                            {
+                                <iframe height="350" width="640" src="https://www.youtube-nocookie.com/embed/@Model.Corpos.FirstOrDefault().Video"
+                                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen="">
+                                </iframe>
+                            }
+                            else if (Model.Musicas.FirstOrDefault() != null && !string.IsNullOrEmpty(Model.Musicas.FirstOrDefault().Imagem))
+                            {
+                                <img src="@String.Format("https://{0}/imagens/content/{1}", Context.Request.Host, Model.Musicas.FirstOrDefault().Imagem)" class="img-responsive" />
+                            }
+                            else if (Model.Narrativas.FirstOrDefault() != null && !string.IsNullOrEmpty(Model.Narrativas.FirstOrDefault().Imagem))
+                            {
+                                <img src="@String.Format("https://{0}/imagens/content/{1}", Context.Request.Host, Model.Narrativas.FirstOrDefault().Imagem)" class="img-responsive" />
+                            }
+                            else if (Model.Corpos.FirstOrDefault() != null && !string.IsNullOrEmpty(Model.Corpos.FirstOrDefault().Imagem))
+                            {
+                                <img src="@String.Format("https://{0}/imagens/content/{1}", Context.Request.Host, Model.Corpos.FirstOrDefault().Imagem)" class="img-responsive" />
                             }
                         </div>
                     </center>

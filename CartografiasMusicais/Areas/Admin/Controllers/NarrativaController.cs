@@ -440,7 +440,7 @@ namespace CartografiasMusicais.Areas.Admin.Controllers
                                                         $"{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}_{Path.GetExtension(v.Imagem.FileName)}") : null)
                         };
 
-                        if (n.Imagem != null)
+                        if (voz.Imagem != null)
                         {
                             using (var image = new MagickImage(HostingEnvironment.WebRootPath + "/imagens/content/" + n.Imagem))
                             {
