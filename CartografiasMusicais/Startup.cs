@@ -2,6 +2,7 @@ using CartografiasMusicais.Business.Context;
 using CartografiasMusicais.Business.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using Slugify;
+using System;
 
 namespace CartografiasMusicais
 {
@@ -87,7 +89,19 @@ namespace CartografiasMusicais
                 app.UseStatusCodePages();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                HttpsCompression = Microsoft.AspNetCore.Http.Features.HttpsCompressionMode.Compress,
+                OnPrepareResponse = (context) =>
+                {
+                    var headers = context.Context.Response.GetTypedHeaders();
+                    headers.CacheControl = new Microsoft.Net.Http.Headers.CacheControlHeaderValue
+                    { 
+                        Public = true,
+                        MaxAge = TimeSpan.FromHours(1)
+                    };
+                }
+            });
             app.UseAuthentication();
             app.UseSession();
             app.UseMvc(routes =>

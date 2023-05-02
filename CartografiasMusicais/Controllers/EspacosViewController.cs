@@ -19,8 +19,8 @@ namespace CartografiasMusicais.Controllers
         public async Task<IActionResult> Index()
         {
             var model = await Context.Espacos.OrderByDescending(x => x.Id).ToListAsync();
-            ViewBag.Imagens = await Context.Espacos.Where(x => string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).Take(30).ToListAsync();
-            ViewBag.Videos = await Context.Espacos.Where(x => !string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).Take(30).ToListAsync();
+            ViewBag.Imagens = await Context.Espacos.Where(x => string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
+            ViewBag.Videos = await Context.Espacos.Where(x => !string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).ToListAsync();
             ViewBag.ImagemDefault = await Context.Espacos.Where(x => string.IsNullOrEmpty(x.Video)).OrderByDescending(x => x.Id).FirstAsync();
             return View(model);
         }

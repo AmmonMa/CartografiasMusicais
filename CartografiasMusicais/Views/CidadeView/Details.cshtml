@@ -71,6 +71,33 @@
             <div class="col-md-12">
                 <div><p>Coletivos Musicais</p></div>
                 <div class="regular slider">
+                    @foreach (var e in Model.Grupos)
+                    {
+
+                    <div>
+                        @if (string.IsNullOrEmpty(e.Video))
+                        {
+                            <a href="/@Model.Slug/grupos/@e.Slug" onclick="callImage('@e.Imagem'); return false;">
+                                <img src="@String.Format("https://{0}/imagens/content/thumbs/{1}", Context.Request.Host, e.Imagem)"
+                                     alt="@e.Descricao" data-pagespeed-url-hash="425040009"
+                                     onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                            </a>
+
+                        }
+                        else
+                        {
+                            <a href="#" onclick="callVideo('@e.Video'); return false;">
+
+                                <img src="https://img.youtube.com/vi/@e.Video/1.jpg"
+                                     alt="@e.Descricao" data-pagespeed-url-hash="425040009"
+                                     onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                            </a>
+                        }
+                    </div>
+
+                    }
+
+
                     @foreach (var e in Model.Musicas)
                     {
 
